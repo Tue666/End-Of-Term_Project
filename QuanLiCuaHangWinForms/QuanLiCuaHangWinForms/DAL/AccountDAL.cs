@@ -11,9 +11,10 @@ namespace QuanLiCuaHangWinForms.DAL
     public class AccountDAL
     {
         public static int Id;
+        public static string UserName;
+        public static string PassWord;
         public static int Type;
-        public static string NameAccount;
-        public static string Pass;
+
         private static AccountDAL singleton;
 
         public static AccountDAL Singleton {
@@ -28,13 +29,19 @@ namespace QuanLiCuaHangWinForms.DAL
             DataTable data = Database.Singleton.ExucuteQuery(query);
             if (data.Rows.Count == 1)
             {
-                Type = Convert.ToInt32(data.Rows[0]["AccountType"]);
                 string queryID = "SELECT ID FROM dbo.Account WHERE UserName = N'" + userName + "' AND PassWord = N'" + passWord + "'";
                 Id = (int)Database.Singleton.ExucuteScalar(queryID);
+                Type = Convert.ToInt32(data.Rows[0]["AccountType"]);
             }
-            NameAccount = userName;
-            Pass = passWord;
+            UserName = userName;
+            PassWord = passWord;
             return data.Rows.Count == 1;
+        }
+        public User getInforUser(string userName, string passWord)
+        {
+            string query = "SELECT * FROM dbo.Account WHERE UserName = N'" + userName + "' AND PassWord = N'" + passWord + "'";
+            User user = new User(Database.Singleton.ExucuteQuery(query).Rows[0]);
+            return user;
         }
         public DataTable loadDataAccount()
         {
@@ -55,6 +62,23 @@ namespace QuanLiCuaHangWinForms.DAL
         {
             string query = "UPDATE dbo.Account SET UserName = N'" + userName + "', PassWord = N'" + passWord + "', AccountType = " + Type + ", Name = N'" + name + "', Sex = N'" + sex + "',Age = " + age + ",Number = N'" + number + "',Email = N'" + email + "',Adress = N'" + adress + "' WHERE ID = " + userID;
             Database.Singleton.ExucuteNonQuery(query);
+        }
+        public void updatePass(int userID, string newPass)
+        {
+            string query = "UPDATE dbo.Account SET PassWord = N'" + newPass + "' WHERE ID = " + userID;
+            Database.Singleton.ExucuteNonQuery(query);
+        }
+        public List<User> searchUser(string userName)
+        {
+            List<User> listUser = new List<User>();
+            string query = "SELECT * FROM dbo.Account WHERE dbo.ChuyenTiengVietCoDauThanhKhongDau(UserName) LIKE N'%'+dbo.ChuyenTiengVietCoDauThanhKhongDau(N'" + userName + "')+'%'";
+            DataTable data = Database.Singleton.ExucuteQuery(query);
+            foreach(DataRow item in data.Rows)
+            {
+                User user = new User(item);
+                listUser.Add(user);
+            }
+            return listUser;
         }
     }
 }

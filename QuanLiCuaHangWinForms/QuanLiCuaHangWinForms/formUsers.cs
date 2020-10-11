@@ -1,4 +1,5 @@
 ﻿using QuanLiCuaHangWinForms.DAL;
+using QuanLiCuaHangWinForms.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,11 @@ namespace QuanLiCuaHangWinForms
         }
 
         #region Methods
+        private void searchUser(string userName)
+        {
+            List<User> listUser = AccountDAL.Singleton.searchUser(userName);
+            dgvAccount.DataSource = listUser;
+        }
         private void loadDataAccount()
         {
             //dgvAccount.Refresh();
@@ -119,19 +125,30 @@ namespace QuanLiCuaHangWinForms
         private void btnAdd_Click(object sender, EventArgs e)
         {
             insertUser(txbUserName.Text, txbPass.Text, int.Parse(txbType.Text), txbName.Text, txbSex.Text, int.Parse(txbAge.Text), txbNumber.Text, txbEmail.Text, txbAdress.Text);
+            MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
             loadDataAccount();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             deleteUser(int.Parse(txbUserID.Text));
+            MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
             loadDataAccount();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             editUser(int.Parse(txbUserID.Text), txbUserName.Text, txbPass.Text, int.Parse(txbType.Text), txbName.Text, txbSex.Text, int.Parse(txbAge.Text), txbNumber.Text, txbEmail.Text, txbAdress.Text);
+            MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
             loadDataAccount();
+        }
+        private void btnListUser_Click(object sender, EventArgs e)
+        {
+            loadDataAccount();
+        }
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            searchUser(txbUserName.Text);
         }
         #endregion
     }

@@ -32,7 +32,7 @@ namespace QuanLiCuaHangWinForms.DAL
         }
         public DataTable loadDataFood()
         {
-            string query = "SELECT f.ID AS [Mã khách hàng],f.FoodName AS [Tên món ăn],fc.CategoryName AS [Loại],f.Price AS [Đơn giá]" +
+            string query = "SELECT f.ID AS [Mã thức ăn],f.FoodName AS [Tên món ăn],fc.CategoryName AS [Loại],f.Price AS [Đơn giá]" +
                 " FROM dbo.Food AS f, dbo.FoodCategory AS fc" +
                 " WHERE f.FoodCategory = fc.ID";
             return Database.Singleton.ExucuteQuery(query);
@@ -51,6 +51,18 @@ namespace QuanLiCuaHangWinForms.DAL
         {
             string query = "UPDATE dbo.Food SET FoodName = N'" + foodName + "', FoodCategory = (SELECT ID FROM dbo.FoodCategory WHERE CategoryName = N'" + foodCateName + "'), Price = " + price + " WHERE ID = " + foodID;
             Database.Singleton.ExucuteNonQuery(query);
+        }
+        public List<Food> searchFood(string foodName)
+        {
+            List<Food> listFood = new List<Food>();
+            string query = "SELECT * FROM dbo.Food WHERE dbo.ChuyenTiengVietCoDauThanhKhongDau(FoodName) LIKE N'%'+dbo.ChuyenTiengVietCoDauThanhKhongDau(N'" + foodName + "')+'%'";
+            DataTable data = Database.Singleton.ExucuteQuery(query);
+            foreach(DataRow item in data.Rows)
+            {
+                Food food = new Food(item);
+                listFood.Add(food);
+            }
+            return listFood;
         }
     }
 }

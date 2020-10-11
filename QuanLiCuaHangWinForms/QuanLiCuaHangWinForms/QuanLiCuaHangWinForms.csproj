@@ -69,6 +69,7 @@
     <Compile Include="DTO\CategoryFood.cs" />
     <Compile Include="DTO\Food.cs" />
     <Compile Include="DTO\Table.cs" />
+    <Compile Include="DTO\User.cs" />
     <Compile Include="formAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +81,18 @@
     </Compile>
     <Compile Include="formFoods.Designer.cs">
       <DependentUpon>formFoods.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formUpdateInfor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formUpdateInfor.Designer.cs">
+      <DependentUpon>formUpdateInfor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formUpdatePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formUpdatePass.Designer.cs">
+      <DependentUpon>formUpdatePass.cs</DependentUpon>
     </Compile>
     <Compile Include="formUsers.cs">
       <SubType>Form</SubType>
@@ -118,6 +131,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formFoods.resx">
       <DependentUpon>formFoods.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formUpdateInfor.resx">
+      <DependentUpon>formUpdateInfor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formUpdatePass.resx">
+      <DependentUpon>formUpdatePass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formUsers.resx">
       <DependentUpon>formUsers.cs</DependentUpon>

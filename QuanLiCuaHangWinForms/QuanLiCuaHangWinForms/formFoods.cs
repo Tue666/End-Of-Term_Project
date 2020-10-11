@@ -22,6 +22,11 @@ namespace QuanLiCuaHangWinForms
         }
 
         #region Methods
+        private void searchFood(string foodName)
+        {
+            List<Food> listFood = FoodDAL.Singleton.searchFood(foodName);
+            dgvFood.DataSource = listFood;
+        }
         private void loadCombobox()
         {
             DataTable data = FoodDAL.Singleton.loadComboboxFoodCate();
@@ -91,24 +96,30 @@ namespace QuanLiCuaHangWinForms
         private void btnAdd_Click(object sender, EventArgs e)
         {
             insertFood(txbFoodName.Text, cbFoodCate.SelectedItem.ToString(), int.Parse(txbPrice.Text));
+            MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
             loadDataFoods();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             deleteFood(int.Parse(txbFoodID.Text));
+            MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
             loadDataFoods();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             editFood(int.Parse(txbFoodID.Text), txbFoodName.Text, cbFoodCate.SelectedItem.ToString(), (float)Convert.ToDouble(txbPrice.Text));
+            MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
             loadDataFoods();
         }
-
+        private void btnListFood_Click(object sender, EventArgs e)
+        {
+            loadDataFoods();
+        }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-
+            searchFood(txbFoodName.Text);
         }
         #endregion
     }

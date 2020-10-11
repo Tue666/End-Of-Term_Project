@@ -30,11 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMainMenu));
             this.rbCMenu = new DevComponents.DotNetBar.RibbonControl();
-            this.rbPAdmin = new DevComponents.DotNetBar.RibbonPanel();
-            this.rbBShopAdmin = new DevComponents.DotNetBar.RibbonBar();
-            this.btnFood = new DevComponents.DotNetBar.ButtonItem();
-            this.rbBUserAdmin = new DevComponents.DotNetBar.RibbonBar();
-            this.btnAccount = new DevComponents.DotNetBar.ButtonItem();
             this.rbPSystem = new DevComponents.DotNetBar.RibbonPanel();
             this.rbBReport = new DevComponents.DotNetBar.RibbonBar();
             this.btnReport = new DevComponents.DotNetBar.ButtonItem();
@@ -53,6 +48,11 @@
             this.btnLogOut = new DevComponents.DotNetBar.ButtonItem();
             this.lbSE2 = new DevComponents.DotNetBar.LabelItem();
             this.btnWallet = new DevComponents.DotNetBar.ButtonItem();
+            this.rbPAdmin = new DevComponents.DotNetBar.RibbonPanel();
+            this.rbBShopAdmin = new DevComponents.DotNetBar.RibbonBar();
+            this.btnFood = new DevComponents.DotNetBar.ButtonItem();
+            this.rbBUserAdmin = new DevComponents.DotNetBar.RibbonBar();
+            this.btnAccount = new DevComponents.DotNetBar.ButtonItem();
             this.rbPService = new DevComponents.DotNetBar.RibbonPanel();
             this.rbBShop = new DevComponents.DotNetBar.RibbonBar();
             this.btnBook = new DevComponents.DotNetBar.ButtonItem();
@@ -86,8 +86,8 @@
             this.expandablePanel1 = new DevComponents.DotNetBar.ExpandablePanel();
             this.tMenu = new DevComponents.DotNetBar.TabControl();
             this.rbCMenu.SuspendLayout();
-            this.rbPAdmin.SuspendLayout();
             this.rbPSystem.SuspendLayout();
+            this.rbPAdmin.SuspendLayout();
             this.rbPService.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tMenu)).BeginInit();
             this.SuspendLayout();
@@ -95,9 +95,9 @@
             // rbCMenu
             // 
             this.rbCMenu.CaptionVisible = true;
+            this.rbCMenu.Controls.Add(this.rbPService);
             this.rbCMenu.Controls.Add(this.rbPSystem);
             this.rbCMenu.Controls.Add(this.rbPAdmin);
-            this.rbCMenu.Controls.Add(this.rbPService);
             this.rbCMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.rbCMenu.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.rbTSystem,
@@ -118,65 +118,6 @@
             this.rbCMenu.TabIndex = 0;
             this.rbCMenu.Text = "ribbonControl1";
             // 
-            // rbPAdmin
-            // 
-            this.rbPAdmin.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.rbPAdmin.Controls.Add(this.rbBShopAdmin);
-            this.rbPAdmin.Controls.Add(this.rbBUserAdmin);
-            this.rbPAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rbPAdmin.Location = new System.Drawing.Point(0, 55);
-            this.rbPAdmin.Name = "rbPAdmin";
-            this.rbPAdmin.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.rbPAdmin.Size = new System.Drawing.Size(840, 103);
-            this.rbPAdmin.TabIndex = 3;
-            this.rbPAdmin.Visible = false;
-            // 
-            // rbBShopAdmin
-            // 
-            this.rbBShopAdmin.AutoOverflowEnabled = true;
-            this.rbBShopAdmin.Dock = System.Windows.Forms.DockStyle.Left;
-            this.rbBShopAdmin.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnFood});
-            this.rbBShopAdmin.Location = new System.Drawing.Point(107, 0);
-            this.rbBShopAdmin.Name = "rbBShopAdmin";
-            this.rbBShopAdmin.Size = new System.Drawing.Size(109, 100);
-            this.rbBShopAdmin.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.rbBShopAdmin.TabIndex = 1;
-            this.rbBShopAdmin.Text = "Cửa hàng";
-            // 
-            // btnFood
-            // 
-            this.btnFood.Image = ((System.Drawing.Image)(resources.GetObject("btnFood.Image")));
-            this.btnFood.ImageFixedSize = new System.Drawing.Size(80, 60);
-            this.btnFood.ImagePaddingHorizontal = 18;
-            this.btnFood.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnFood.Name = "btnFood";
-            this.btnFood.SubItemsExpandWidth = 14;
-            this.btnFood.Text = "Thức ăn";
-            this.btnFood.Click += new System.EventHandler(this.btnFood_Click);
-            // 
-            // rbBUserAdmin
-            // 
-            this.rbBUserAdmin.AutoOverflowEnabled = true;
-            this.rbBUserAdmin.Dock = System.Windows.Forms.DockStyle.Left;
-            this.rbBUserAdmin.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnAccount});
-            this.rbBUserAdmin.Location = new System.Drawing.Point(3, 0);
-            this.rbBUserAdmin.Name = "rbBUserAdmin";
-            this.rbBUserAdmin.Size = new System.Drawing.Size(104, 100);
-            this.rbBUserAdmin.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.rbBUserAdmin.TabIndex = 0;
-            this.rbBUserAdmin.Text = "Người dùng";
-            // 
-            // btnAccount
-            // 
-            this.btnAccount.Image = ((System.Drawing.Image)(resources.GetObject("btnAccount.Image")));
-            this.btnAccount.ImageFixedSize = new System.Drawing.Size(70, 57);
-            this.btnAccount.ImagePaddingHorizontal = 24;
-            this.btnAccount.Name = "btnAccount";
-            this.btnAccount.SubItemsExpandWidth = 14;
-            this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
-            // 
             // rbPSystem
             // 
             this.rbPSystem.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
@@ -190,6 +131,7 @@
             this.rbPSystem.Padding = new System.Windows.Forms.Padding(5, 1, 3, 3);
             this.rbPSystem.Size = new System.Drawing.Size(840, 103);
             this.rbPSystem.TabIndex = 1;
+            this.rbPSystem.Visible = false;
             // 
             // rbBReport
             // 
@@ -368,6 +310,65 @@
             this.btnWallet.SubItemsExpandWidth = 14;
             this.btnWallet.Text = "Ví tiền";
             // 
+            // rbPAdmin
+            // 
+            this.rbPAdmin.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.rbPAdmin.Controls.Add(this.rbBShopAdmin);
+            this.rbPAdmin.Controls.Add(this.rbBUserAdmin);
+            this.rbPAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rbPAdmin.Location = new System.Drawing.Point(0, 55);
+            this.rbPAdmin.Name = "rbPAdmin";
+            this.rbPAdmin.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.rbPAdmin.Size = new System.Drawing.Size(840, 103);
+            this.rbPAdmin.TabIndex = 3;
+            this.rbPAdmin.Visible = false;
+            // 
+            // rbBShopAdmin
+            // 
+            this.rbBShopAdmin.AutoOverflowEnabled = true;
+            this.rbBShopAdmin.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rbBShopAdmin.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnFood});
+            this.rbBShopAdmin.Location = new System.Drawing.Point(107, 0);
+            this.rbBShopAdmin.Name = "rbBShopAdmin";
+            this.rbBShopAdmin.Size = new System.Drawing.Size(109, 100);
+            this.rbBShopAdmin.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.rbBShopAdmin.TabIndex = 1;
+            this.rbBShopAdmin.Text = "Cửa hàng";
+            // 
+            // btnFood
+            // 
+            this.btnFood.Image = ((System.Drawing.Image)(resources.GetObject("btnFood.Image")));
+            this.btnFood.ImageFixedSize = new System.Drawing.Size(80, 60);
+            this.btnFood.ImagePaddingHorizontal = 18;
+            this.btnFood.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnFood.Name = "btnFood";
+            this.btnFood.SubItemsExpandWidth = 14;
+            this.btnFood.Text = "Thức ăn";
+            this.btnFood.Click += new System.EventHandler(this.btnFood_Click);
+            // 
+            // rbBUserAdmin
+            // 
+            this.rbBUserAdmin.AutoOverflowEnabled = true;
+            this.rbBUserAdmin.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rbBUserAdmin.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnAccount});
+            this.rbBUserAdmin.Location = new System.Drawing.Point(3, 0);
+            this.rbBUserAdmin.Name = "rbBUserAdmin";
+            this.rbBUserAdmin.Size = new System.Drawing.Size(104, 100);
+            this.rbBUserAdmin.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.rbBUserAdmin.TabIndex = 0;
+            this.rbBUserAdmin.Text = "Người dùng";
+            // 
+            // btnAccount
+            // 
+            this.btnAccount.Image = ((System.Drawing.Image)(resources.GetObject("btnAccount.Image")));
+            this.btnAccount.ImageFixedSize = new System.Drawing.Size(70, 57);
+            this.btnAccount.ImagePaddingHorizontal = 24;
+            this.btnAccount.Name = "btnAccount";
+            this.btnAccount.SubItemsExpandWidth = 14;
+            this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
+            // 
             // rbPService
             // 
             this.rbPService.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
@@ -378,7 +379,6 @@
             this.rbPService.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.rbPService.Size = new System.Drawing.Size(840, 103);
             this.rbPService.TabIndex = 2;
-            this.rbPService.Visible = false;
             // 
             // rbBShop
             // 
@@ -433,7 +433,6 @@
             // 
             // rbTSystem
             // 
-            this.rbTSystem.Checked = true;
             this.rbTSystem.ColorTable = DevComponents.DotNetBar.eRibbonTabColor.Orange;
             this.rbTSystem.ImagePaddingHorizontal = 8;
             this.rbTSystem.Name = "rbTSystem";
@@ -442,6 +441,7 @@
             // 
             // rbTService
             // 
+            this.rbTService.Checked = true;
             this.rbTService.ColorTable = DevComponents.DotNetBar.eRibbonTabColor.Orange;
             this.rbTService.ImagePaddingHorizontal = 8;
             this.rbTService.Name = "rbTService";
@@ -719,8 +719,8 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.rbCMenu.ResumeLayout(false);
             this.rbCMenu.PerformLayout();
-            this.rbPAdmin.ResumeLayout(false);
             this.rbPSystem.ResumeLayout(false);
+            this.rbPAdmin.ResumeLayout(false);
             this.rbPService.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tMenu)).EndInit();
             this.ResumeLayout(false);

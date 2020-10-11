@@ -19,7 +19,7 @@ namespace QuanLiCuaHangWinForms
         public formMainMenu()
         {
             InitializeComponent();
-            btnHello.Text = "Designed by 9hT | Xin chào " + AccountDAL.NameAccount + "!";
+            btnHello.Text = "Designed by 9hT | Xin chào " + AccountDAL.UserName + "!";
             if (AccountDAL.Type == 1)
             {
                 rbTAdmin.Visible = true;

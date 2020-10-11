@@ -54,7 +54,7 @@
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(261, 18);
             this.txbName.TabIndex = 0;
-            this.txbName.Text = "Tên đăng nhập ....";
+            this.txbName.Text = "admin";
             this.txbName.Click += new System.EventHandler(this.txbName_Click);
             this.txbName.Enter += new System.EventHandler(this.txbName_Enter);
             // 
@@ -87,7 +87,7 @@
             this.txbPass.Name = "txbPass";
             this.txbPass.Size = new System.Drawing.Size(261, 18);
             this.txbPass.TabIndex = 1;
-            this.txbPass.Text = "Mật khẩu ....";
+            this.txbPass.Text = "123";
             this.txbPass.Click += new System.EventHandler(this.txbPass_Click);
             this.txbPass.TextChanged += new System.EventHandler(this.txbPass_TextChanged);
             this.txbPass.Enter += new System.EventHandler(this.txbPass_Enter);

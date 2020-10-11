@@ -30,19 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formAccount));
             this.gpnlAccount = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.nmAge = new System.Windows.Forms.NumericUpDown();
+            this.ckFemale = new System.Windows.Forms.CheckBox();
+            this.ckMale = new System.Windows.Forms.CheckBox();
             this.btnSaveAvatar = new System.Windows.Forms.Button();
             this.btnUpdateAvatar = new System.Windows.Forms.Button();
             this.gpnlAvatar = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txbAdress = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txbUserAdress = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txbUserEmail = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txbUserNumber = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txbUserName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.lbAdress = new System.Windows.Forms.Label();
             this.lbUserEmail = new System.Windows.Forms.Label();
             this.lbUserNumber = new System.Windows.Forms.Label();
+            this.lbAge = new System.Windows.Forms.Label();
             this.lbUserName = new System.Windows.Forms.Label();
             this.txbUserID = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.lbUserID = new System.Windows.Forms.Label();
@@ -55,6 +57,7 @@
             this.labelItem1 = new DevComponents.DotNetBar.LabelItem();
             this.btnUpdatePass = new DevComponents.DotNetBar.ButtonItem();
             this.gpnlAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmAge)).BeginInit();
             this.gpnlAvatar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gpnlAction.SuspendLayout();
@@ -67,18 +70,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gpnlAccount.CanvasColor = System.Drawing.SystemColors.Control;
             this.gpnlAccount.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.gpnlAccount.Controls.Add(this.checkBox2);
-            this.gpnlAccount.Controls.Add(this.checkBox1);
+            this.gpnlAccount.Controls.Add(this.nmAge);
+            this.gpnlAccount.Controls.Add(this.ckFemale);
+            this.gpnlAccount.Controls.Add(this.ckMale);
             this.gpnlAccount.Controls.Add(this.btnSaveAvatar);
             this.gpnlAccount.Controls.Add(this.btnUpdateAvatar);
             this.gpnlAccount.Controls.Add(this.gpnlAvatar);
-            this.gpnlAccount.Controls.Add(this.txbAdress);
+            this.gpnlAccount.Controls.Add(this.txbUserAdress);
             this.gpnlAccount.Controls.Add(this.txbUserEmail);
             this.gpnlAccount.Controls.Add(this.txbUserNumber);
             this.gpnlAccount.Controls.Add(this.txbUserName);
             this.gpnlAccount.Controls.Add(this.lbAdress);
             this.gpnlAccount.Controls.Add(this.lbUserEmail);
             this.gpnlAccount.Controls.Add(this.lbUserNumber);
+            this.gpnlAccount.Controls.Add(this.lbAge);
             this.gpnlAccount.Controls.Add(this.lbUserName);
             this.gpnlAccount.Controls.Add(this.txbUserID);
             this.gpnlAccount.Controls.Add(this.lbUserID);
@@ -108,31 +113,40 @@
             this.gpnlAccount.TabIndex = 0;
             this.gpnlAccount.Text = "Thông tin tài khoản";
             // 
-            // checkBox2
+            // nmAge
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.BackColor = System.Drawing.Color.Transparent;
-            this.checkBox2.Enabled = false;
-            this.checkBox2.Location = new System.Drawing.Point(196, 93);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(40, 17);
-            this.checkBox2.TabIndex = 6;
-            this.checkBox2.Text = "Nữ";
-            this.checkBox2.UseVisualStyleBackColor = false;
+            this.nmAge.Enabled = false;
+            this.nmAge.Location = new System.Drawing.Point(129, 92);
+            this.nmAge.Name = "nmAge";
+            this.nmAge.ReadOnly = true;
+            this.nmAge.Size = new System.Drawing.Size(51, 20);
+            this.nmAge.TabIndex = 7;
             // 
-            // checkBox1
+            // ckFemale
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.BackColor = System.Drawing.Color.Transparent;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Enabled = false;
-            this.checkBox1.Location = new System.Drawing.Point(129, 93);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(48, 17);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "Nam";
-            this.checkBox1.UseVisualStyleBackColor = false;
+            this.ckFemale.AutoSize = true;
+            this.ckFemale.BackColor = System.Drawing.Color.Transparent;
+            this.ckFemale.Enabled = false;
+            this.ckFemale.Location = new System.Drawing.Point(288, 93);
+            this.ckFemale.Name = "ckFemale";
+            this.ckFemale.Size = new System.Drawing.Size(40, 17);
+            this.ckFemale.TabIndex = 6;
+            this.ckFemale.Text = "Nữ";
+            this.ckFemale.UseVisualStyleBackColor = false;
+            // 
+            // ckMale
+            // 
+            this.ckMale.AutoSize = true;
+            this.ckMale.BackColor = System.Drawing.Color.Transparent;
+            this.ckMale.Checked = true;
+            this.ckMale.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckMale.Enabled = false;
+            this.ckMale.Location = new System.Drawing.Point(221, 93);
+            this.ckMale.Name = "ckMale";
+            this.ckMale.Size = new System.Drawing.Size(48, 17);
+            this.ckMale.TabIndex = 6;
+            this.ckMale.Text = "Nam";
+            this.ckMale.UseVisualStyleBackColor = false;
             // 
             // btnSaveAvatar
             // 
@@ -201,18 +215,18 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // txbAdress
+            // txbUserAdress
             // 
             // 
             // 
             // 
-            this.txbAdress.Border.Class = "TextBoxBorder";
-            this.txbAdress.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbAdress.Location = new System.Drawing.Point(129, 204);
-            this.txbAdress.Name = "txbAdress";
-            this.txbAdress.ReadOnly = true;
-            this.txbAdress.Size = new System.Drawing.Size(379, 22);
-            this.txbAdress.TabIndex = 1;
+            this.txbUserAdress.Border.Class = "TextBoxBorder";
+            this.txbUserAdress.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbUserAdress.Location = new System.Drawing.Point(129, 204);
+            this.txbUserAdress.Name = "txbUserAdress";
+            this.txbUserAdress.ReadOnly = true;
+            this.txbUserAdress.Size = new System.Drawing.Size(379, 22);
+            this.txbUserAdress.TabIndex = 1;
             // 
             // txbUserEmail
             // 
@@ -294,6 +308,20 @@
             this.lbUserNumber.Size = new System.Drawing.Size(77, 15);
             this.lbUserNumber.TabIndex = 0;
             this.lbUserNumber.Text = "Số điện thoại";
+            // 
+            // lbAge
+            // 
+            this.lbAge.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbAge.AutoSize = true;
+            this.lbAge.BackColor = System.Drawing.Color.Transparent;
+            this.lbAge.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAge.Location = new System.Drawing.Point(24, 96);
+            this.lbAge.Name = "lbAge";
+            this.lbAge.Size = new System.Drawing.Size(31, 15);
+            this.lbAge.TabIndex = 0;
+            this.lbAge.Text = "Tuổi";
             // 
             // lbUserName
             // 
@@ -401,7 +429,7 @@
             this.btnUpdatePass});
             this.rbBUpdate.Location = new System.Drawing.Point(38, 3);
             this.rbBUpdate.Name = "rbBUpdate";
-            this.rbBUpdate.Size = new System.Drawing.Size(195, 78);
+            this.rbBUpdate.Size = new System.Drawing.Size(194, 78);
             this.rbBUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.rbBUpdate.TabIndex = 0;
             this.rbBUpdate.Text = "Cập nhật";
@@ -411,10 +439,12 @@
             this.btnUpdateInfor.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdateInfor.Image")));
             this.btnUpdateInfor.ImageFixedSize = new System.Drawing.Size(50, 39);
             this.btnUpdateInfor.ImagePaddingHorizontal = 40;
+            this.btnUpdateInfor.ImagePaddingVertical = 1;
             this.btnUpdateInfor.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.btnUpdateInfor.Name = "btnUpdateInfor";
             this.btnUpdateInfor.SubItemsExpandWidth = 14;
             this.btnUpdateInfor.Text = "Thông tin";
+            this.btnUpdateInfor.Click += new System.EventHandler(this.btnUpdateInfor_Click);
             // 
             // lbSE1
             // 
@@ -439,6 +469,7 @@
             this.btnUpdatePass.Name = "btnUpdatePass";
             this.btnUpdatePass.SubItemsExpandWidth = 14;
             this.btnUpdatePass.Text = "Mật khẩu";
+            this.btnUpdatePass.Click += new System.EventHandler(this.btnUpdatePass_Click);
             // 
             // formAccount
             // 
@@ -454,6 +485,7 @@
             this.Text = "Thông tin";
             this.gpnlAccount.ResumeLayout(false);
             this.gpnlAccount.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmAge)).EndInit();
             this.gpnlAvatar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gpnlAction.ResumeLayout(false);
@@ -474,7 +506,7 @@
         private System.Windows.Forms.Label lbUserName;
         private DevComponents.DotNetBar.Controls.TextBoxX txbUserNumber;
         private System.Windows.Forms.Label lbUserNumber;
-        private DevComponents.DotNetBar.Controls.TextBoxX txbAdress;
+        private DevComponents.DotNetBar.Controls.TextBoxX txbUserAdress;
         private DevComponents.DotNetBar.Controls.TextBoxX txbUserEmail;
         private System.Windows.Forms.Label lbAdress;
         private System.Windows.Forms.Label lbUserEmail;
@@ -486,7 +518,9 @@
         private DevComponents.DotNetBar.ButtonItem btnExit;
         private DevComponents.DotNetBar.ButtonItem btnUpdatePass;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox ckFemale;
+        private System.Windows.Forms.CheckBox ckMale;
+        private System.Windows.Forms.NumericUpDown nmAge;
+        private System.Windows.Forms.Label lbAge;
     }
 }

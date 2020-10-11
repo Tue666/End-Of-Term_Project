@@ -54,9 +54,11 @@
             this.btnSearch = new DevComponents.DotNetBar.ButtonItem();
             this.rbBSearch = new DevComponents.DotNetBar.RibbonBar();
             this.gpnlAction = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.rbBListFood = new DevComponents.DotNetBar.RibbonBar();
+            this.btnListFood = new DevComponents.DotNetBar.ButtonItem();
             this.gpnlFood = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.cbFoodCate = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFood)).BeginInit();
             this.gpnlAction.SuspendLayout();
             this.gpnlFood.SuspendLayout();
@@ -305,7 +307,7 @@
             // btnSearch
             // 
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.ImageFixedSize = new System.Drawing.Size(50, 55);
+            this.btnSearch.ImageFixedSize = new System.Drawing.Size(50, 50);
             this.btnSearch.ImagePaddingHorizontal = 40;
             this.btnSearch.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.btnSearch.Name = "btnSearch";
@@ -317,7 +319,7 @@
             this.rbBSearch.AutoOverflowEnabled = true;
             this.rbBSearch.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnSearch});
-            this.rbBSearch.Location = new System.Drawing.Point(351, 4);
+            this.rbBSearch.Location = new System.Drawing.Point(463, 5);
             this.rbBSearch.Name = "rbBSearch";
             this.rbBSearch.Size = new System.Drawing.Size(100, 77);
             this.rbBSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
@@ -330,6 +332,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gpnlAction.CanvasColor = System.Drawing.SystemColors.Control;
             this.gpnlAction.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.gpnlAction.Controls.Add(this.rbBListFood);
             this.gpnlAction.Controls.Add(this.rbBSearch);
             this.gpnlAction.Controls.Add(this.rbBExit);
             this.gpnlAction.Controls.Add(this.rbBUpdate);
@@ -358,6 +361,28 @@
             this.gpnlAction.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
             this.gpnlAction.TabIndex = 5;
             this.gpnlAction.Text = "Tác vụ";
+            // 
+            // rbBListFood
+            // 
+            this.rbBListFood.AutoOverflowEnabled = true;
+            this.rbBListFood.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnListFood});
+            this.rbBListFood.Location = new System.Drawing.Point(333, 4);
+            this.rbBListFood.Name = "rbBListFood";
+            this.rbBListFood.Size = new System.Drawing.Size(100, 77);
+            this.rbBListFood.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.rbBListFood.TabIndex = 3;
+            this.rbBListFood.Text = "Danh sách thức ăn";
+            // 
+            // btnListFood
+            // 
+            this.btnListFood.Image = ((System.Drawing.Image)(resources.GetObject("btnListFood.Image")));
+            this.btnListFood.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.btnListFood.ImagePaddingHorizontal = 40;
+            this.btnListFood.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnListFood.Name = "btnListFood";
+            this.btnListFood.SubItemsExpandWidth = 14;
+            this.btnListFood.Click += new System.EventHandler(this.btnListFood_Click);
             // 
             // gpnlFood
             // 
@@ -406,6 +431,14 @@
             this.gpnlFood.TabIndex = 4;
             this.gpnlFood.Text = "Thông tin thức ăn";
             // 
+            // cbFoodCate
+            // 
+            this.cbFoodCate.FormattingEnabled = true;
+            this.cbFoodCate.Location = new System.Drawing.Point(109, 107);
+            this.cbFoodCate.Name = "cbFoodCate";
+            this.cbFoodCate.Size = new System.Drawing.Size(205, 21);
+            this.cbFoodCate.TabIndex = 8;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -416,14 +449,6 @@
             this.label1.Size = new System.Drawing.Size(62, 16);
             this.label1.TabIndex = 7;
             this.label1.Text = "Ẩn / Hiện";
-            // 
-            // cbFoodCate
-            // 
-            this.cbFoodCate.FormattingEnabled = true;
-            this.cbFoodCate.Location = new System.Drawing.Point(109, 107);
-            this.cbFoodCate.Name = "cbFoodCate";
-            this.cbFoodCate.Size = new System.Drawing.Size(205, 21);
-            this.cbFoodCate.TabIndex = 8;
             // 
             // formFoods
             // 
@@ -471,5 +496,7 @@
         private DevComponents.DotNetBar.Controls.GroupPanel gpnlFood;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbFoodCate;
+        private DevComponents.DotNetBar.RibbonBar rbBListFood;
+        private DevComponents.DotNetBar.ButtonItem btnListFood;
     }
 }

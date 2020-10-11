@@ -75,6 +75,8 @@
             this.lbUserName = new System.Windows.Forms.Label();
             this.lbUserID = new System.Windows.Forms.Label();
             this.dgvAccount = new System.Windows.Forms.DataGridView();
+            this.rbBListUser = new DevComponents.DotNetBar.RibbonBar();
+            this.btnListUser = new DevComponents.DotNetBar.ButtonItem();
             this.gpnlAction.SuspendLayout();
             this.gpnlAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccount)).BeginInit();
@@ -86,6 +88,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gpnlAction.CanvasColor = System.Drawing.SystemColors.Control;
             this.gpnlAction.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.gpnlAction.Controls.Add(this.rbBListUser);
             this.gpnlAction.Controls.Add(this.rbBSearch);
             this.gpnlAction.Controls.Add(this.rbBExit);
             this.gpnlAction.Controls.Add(this.rbBUpdate);
@@ -120,7 +123,7 @@
             this.rbBSearch.AutoOverflowEnabled = true;
             this.rbBSearch.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnSearch});
-            this.rbBSearch.Location = new System.Drawing.Point(351, 4);
+            this.rbBSearch.Location = new System.Drawing.Point(459, 3);
             this.rbBSearch.Name = "rbBSearch";
             this.rbBSearch.Size = new System.Drawing.Size(100, 77);
             this.rbBSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
@@ -130,11 +133,12 @@
             // btnSearch
             // 
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.ImageFixedSize = new System.Drawing.Size(50, 55);
+            this.btnSearch.ImageFixedSize = new System.Drawing.Size(50, 50);
             this.btnSearch.ImagePaddingHorizontal = 40;
             this.btnSearch.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.SubItemsExpandWidth = 14;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // rbBExit
             // 
@@ -675,6 +679,28 @@
             this.dgvAccount.TabIndex = 0;
             this.dgvAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAccount_CellClick);
             // 
+            // rbBListUser
+            // 
+            this.rbBListUser.AutoOverflowEnabled = true;
+            this.rbBListUser.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnListUser});
+            this.rbBListUser.Location = new System.Drawing.Point(333, 4);
+            this.rbBListUser.Name = "rbBListUser";
+            this.rbBListUser.Size = new System.Drawing.Size(100, 77);
+            this.rbBListUser.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.rbBListUser.TabIndex = 4;
+            this.rbBListUser.Text = "Danh sách khách hàng";
+            // 
+            // btnListUser
+            // 
+            this.btnListUser.Image = ((System.Drawing.Image)(resources.GetObject("btnListUser.Image")));
+            this.btnListUser.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.btnListUser.ImagePaddingHorizontal = 40;
+            this.btnListUser.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnListUser.Name = "btnListUser";
+            this.btnListUser.SubItemsExpandWidth = 14;
+            this.btnListUser.Click += new System.EventHandler(this.btnListUser_Click);
+            // 
             // formUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -741,5 +767,7 @@
         private DevComponents.DotNetBar.ButtonItem btnSearch;
         private DevComponents.DotNetBar.ButtonItem btnExit;
         private System.Windows.Forms.Label label1;
+        private DevComponents.DotNetBar.RibbonBar rbBListUser;
+        private DevComponents.DotNetBar.ButtonItem btnListUser;
     }
 }

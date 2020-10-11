@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,37 +19,48 @@ namespace QuanLiCuaHangWinForms
         public formTable()
         {
             InitializeComponent();
-            
+
             loadTableList();
             loadCategoryFood();
             loadComboboxTable(cbTableList);
+            timer1.Start();
         }
         #region Methods
-        void loadCategoryFood()
+        private void searchFood(string foodName)
+        {
+            List<Food> listFoods = FoodDAL.Singleton.searchFood(foodName);
+            MessageBox.Show("Tìm thấy " + listFoods.Count() + " kết quả", "Thông báo", MessageBoxButtons.OK);
+            foreach (Food item in listFoods)
+            {
+                cbSearchedItem.Items.Add(item.FoodName);
+            }
+        }
+        private void loadCategoryFood()
         {
             List<CategoryFood> listCateFood = CategoryFoodDAL.Singleton.listCateFood();
             cbCategory.DataSource = listCateFood;
             cbCategory.DisplayMember = "cateName";
         }
-        void loadFoodByCategoryID(int cateID)
+        private void loadFoodByCategoryID(int cateID)
         {
             List<Food> listFood = FoodDAL.Singleton.listFoodByCateID(cateID);
             cbFood.DataSource = listFood;
             cbFood.DisplayMember = "foodName";
         }
         Button[] buttonList = new Button[10];
-        void loadTableList()
+        private void loadTableList()
         {
             int i = 1, x, y;
             List<Table> tableList = TableDAL.Singleton.tableList();
-            
+
             foreach (Table item in tableList)
             {
-                if (i == 1 || i == 3 || i == 5) x = 42;
-                else x = 241;
-                if (i == 1 || i == 2) y = 70;
-                else if (i == 3 || i == 4) y = 225;
-                else y = 372;
+                if (i == 1 || i == 2 || i == 3 || i == 4) y = 65;
+                else y = 235;
+                if (i == 1 || i == 5) x = 45;
+                else if (i == 2 || i == 6) x = 217;
+                else if (i == 3 || i == 7) x = 472;
+                else x = 644;
                 buttonList[i] = new Button() { Width = TableDAL.TableW, Height = TableDAL.TableH };
                 buttonList[i].Text = item.Name + Environment.NewLine + item.Status;
                 buttonList[i].Location = new Point(x, y);
@@ -62,12 +74,12 @@ namespace QuanLiCuaHangWinForms
                 i++;
             }
         }
-        void showBill(int tableID)
+        private void showBill(int tableID)
         {
             double totalPrice = 0;
             lsvBillInfo.Items.Clear();
-            List<BillInfo>  listBillInfo = BillInfoDAL.Singleton.getBillInfoByTableID(tableID);
-            foreach(BillInfo item in listBillInfo)
+            List<BillInfo> listBillInfo = BillInfoDAL.Singleton.getBillInfoByTableID(tableID);
+            foreach (BillInfo item in listBillInfo)
             {
                 ListViewItem lsvItem = new ListViewItem(item.Name.ToString());
                 lsvItem.SubItems.Add(item.Quantity.ToString());
@@ -78,7 +90,7 @@ namespace QuanLiCuaHangWinForms
             CultureInfo culture = new CultureInfo("vi-VN");
             txbTotalPrice.Text = totalPrice.ToString("c", culture);
         }
-        void loadComboboxTable(ComboBox cb)
+        private void loadComboboxTable(ComboBox cb)
         {
             List<Table> tableList = TableDAL.Singleton.tableList();
             cb.DataSource = tableList;
@@ -87,6 +99,27 @@ namespace QuanLiCuaHangWinForms
         #endregion
 
         #region Events
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            pbMoveCar.Location = new Point(pbMoveCar.Location.X + 1, pbMoveCar.Location.Y);
+            if (pbMoveCar.Location.X >= 700)
+            {
+                pbMoveCar.Image = new Bitmap(@"D:\ti\Winform\End-Of-Term_Project\Images\Untitled.png");
+                timer1.Stop();
+                timer2.Start();
+            }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            pbMoveCar.Location = new Point(pbMoveCar.Location.X - 1, pbMoveCar.Location.Y);
+            if (pbMoveCar.Location.X <= 15)
+            {
+                pbMoveCar.Image = new Bitmap(@"D:\ti\Winform\End-Of-Term_Project\Images\4503.png_860.png");
+                timer2.Stop();
+                timer1.Start();
+            }
+        }
         private void Btn_Click(object sender, EventArgs e)
         {
             int tableID = ((sender as Button).Tag as Table).Id;
@@ -157,7 +190,7 @@ namespace QuanLiCuaHangWinForms
             int idBill = BillDAL.Singleton.getBillIDByTableID(table.Id);
             if (idBill != -1) //có bill
             {
-                if(MessageBox.Show("Thanh toán?","Thông báo",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning) == DialogResult.OK)
+                if (MessageBox.Show("Thanh toán?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     BillDAL.Singleton.checkOut(idBill);
                     TableDAL.Singleton.changeStatus(idBill);
@@ -169,31 +202,43 @@ namespace QuanLiCuaHangWinForms
         }
         private void btnSwapTable_Click(object sender, EventArgs e)
         {
-            int idTable1 = int.Parse(txbFocusTable.Text);
-            int idTable2 = (cbTableList.SelectedItem as Table).Id;
-            if (buttonList[idTable1].Text == "Bàn "+idTable1+"\r\nCó người")
+            if (txbFocusTable.Text == "")
             {
-                if (buttonList[idTable2].Text == "Bàn " + idTable2 + "\r\nCó người")
-                {
-                    MessageBox.Show("Bàn này đã có người, vui lòng chọn bàn khác. Xin cảm ơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    TableDAL.Singleton.swapTable(idTable1, idTable2);
-                    buttonList[idTable1].BackColor = Color.Aqua;
-                    buttonList[idTable1].Text = "Bàn " + idTable1 + Environment.NewLine + "Trống";
-                    buttonList[idTable2].BackColor = Color.Pink;
-                    buttonList[idTable2].Text = "Bàn " + idTable2 + Environment.NewLine + "Có người";
-                    showBill(idTable1);
-                }
+                MessageBox.Show("Xin mời chọn bàn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                if (buttonList[idTable2].Text == "Bàn " + idTable2 + "\r\nCó người")
+                int idTable1 = int.Parse(txbFocusTable.Text);
+                int idTable2 = (cbTableList.SelectedItem as Table).Id;
+                if (buttonList[idTable1].Text == "Bàn " + idTable1 + "\r\nCó người")
                 {
-                    MessageBox.Show("Bàn này đã có người, vui lòng chọn bàn khác. Xin cảm ơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (buttonList[idTable2].Text == "Bàn " + idTable2 + "\r\nCó người")
+                    {
+                        MessageBox.Show("Bàn này đã có người, vui lòng chọn bàn khác. Xin cảm ơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        TableDAL.Singleton.swapTable(idTable1, idTable2);
+                        buttonList[idTable1].BackColor = Color.Aqua;
+                        buttonList[idTable1].Text = "Bàn " + idTable1 + Environment.NewLine + "Trống";
+                        buttonList[idTable2].BackColor = Color.Pink;
+                        buttonList[idTable2].Text = "Bàn " + idTable2 + Environment.NewLine + "Có người";
+                        showBill(idTable1);
+                        MessageBox.Show("Chuyển bàn thành công", "Thông báo", MessageBoxButtons.OK);
+                    }
+                }
+                else
+                {
+                    if (buttonList[idTable2].Text == "Bàn " + idTable2 + "\r\nCó người")
+                    {
+                        MessageBox.Show("Bàn này đã có người, vui lòng chọn bàn khác. Xin cảm ơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
+        }
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            searchFood(txbSearch.Text);
         }
         #endregion
     }
