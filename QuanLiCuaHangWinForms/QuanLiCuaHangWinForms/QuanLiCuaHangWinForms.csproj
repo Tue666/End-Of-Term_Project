@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C99FAAC0-688F-470D-96AD-43195192A14D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>QuanLiCuaHangWinForms</RootNamespace>
+    <AssemblyName>QuanLiCuaHangWinForms</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.52, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=7.5.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL\AccountDAL.cs" />
+    <Compile Include="DAL\BillDAL.cs" />
+    <Compile Include="DAL\BillInfoDAL.cs" />
+    <Compile Include="DAL\CategoryFoodDAL.cs" />
+    <Compile Include="DAL\Database.cs" />
+    <Compile Include="DAL\FoodDAL.cs" />
+    <Compile Include="DAL\TableDAL.cs" />
+    <Compile Include="DTO\Bill.cs" />
+    <Compile Include="DTO\BillInfo.cs" />
+    <Compile Include="DTO\CategoryFood.cs" />
+    <Compile Include="DTO\Food.cs" />
+    <Compile Include="DTO\Table.cs" />
+    <Compile Include="formAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formAccount.Designer.cs">
+      <DependentUpon>formAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formFoods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formFoods.Designer.cs">
+      <DependentUpon>formFoods.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formUsers.Designer.cs">
+      <DependentUpon>formUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formIntroduce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formIntroduce.Designer.cs">
+      <DependentUpon>formIntroduce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formLogin.Designer.cs">
+      <DependentUpon>formLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formMainMenu.Designer.cs">
+      <DependentUpon>formMainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formTable.Designer.cs">
+      <DependentUpon>formTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="formAccount.resx">
+      <DependentUpon>formAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formFoods.resx">
+      <DependentUpon>formFoods.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formUsers.resx">
+      <DependentUpon>formUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formIntroduce.resx">
+      <DependentUpon>formIntroduce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formLogin.resx">
+      <DependentUpon>formLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formMainMenu.resx">
+      <DependentUpon>formMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formTable.resx">
+      <DependentUpon>formTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\userIcon3.png" />
+    <None Include="Resources\userIcon2.png" />
+    <None Include="Resources\userIcon1.png" />
+    <None Include="Resources\userIcon.png" />
+    <None Include="Resources\table.png" />
+    <None Include="Resources\btnExit.png" />
+    <None Include="Resources\btnRegis.png" />
+    <None Include="Resources\btnLogin.png" />
+    <None Include="Resources\btnInfo.png" />
+    <None Include="Resources\backgroundLogin.png" />
+    <None Include="Resources\fbIcon.png" />
+    <None Include="Resources\fb1.jpg" />
+    <Content Include="Resources\Firefox.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
