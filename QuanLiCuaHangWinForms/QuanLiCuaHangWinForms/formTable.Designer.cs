@@ -35,6 +35,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txbTotalPrice = new System.Windows.Forms.TextBox();
             this.grpAction = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.rbBSearchByKey = new DevComponents.DotNetBar.RibbonBar();
@@ -71,6 +72,7 @@
             this.pbMoveCar = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).BeginInit();
             this.grpAction.SuspendLayout();
             this.rbBSearchByKey.SuspendLayout();
@@ -93,7 +95,7 @@
             this.dgvTable.ImeMode = System.Windows.Forms.ImeMode.On;
             this.dgvTable.Location = new System.Drawing.Point(3, 140);
             this.dgvTable.Name = "dgvTable";
-            this.dgvTable.Size = new System.Drawing.Size(551, 304);
+            this.dgvTable.Size = new System.Drawing.Size(524, 304);
             this.dgvTable.TabIndex = 18;
             // 
             // lsvBillInfo
@@ -103,12 +105,14 @@
             this.lsvBillInfo.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3});
+            this.columnHeader3,
+            this.columnHeader4});
             this.lsvBillInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lsvBillInfo.FullRowSelect = true;
             this.lsvBillInfo.GridLines = true;
-            this.lsvBillInfo.Location = new System.Drawing.Point(560, 175);
+            this.lsvBillInfo.Location = new System.Drawing.Point(533, 175);
             this.lsvBillInfo.Name = "lsvBillInfo";
-            this.lsvBillInfo.Size = new System.Drawing.Size(357, 269);
+            this.lsvBillInfo.Size = new System.Drawing.Size(384, 269);
             this.lsvBillInfo.TabIndex = 21;
             this.lsvBillInfo.UseCompatibleStateImageBehavior = false;
             this.lsvBillInfo.View = System.Windows.Forms.View.Details;
@@ -116,25 +120,30 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Tên món ăn";
-            this.columnHeader1.Width = 206;
+            this.columnHeader1.Width = 176;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Số lượng";
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader2.Width = 65;
+            this.columnHeader2.Width = 61;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Thành tiền";
+            this.columnHeader3.Text = "Khuyến mãi";
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader3.Width = 80;
+            this.columnHeader3.Width = 77;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Thành tiền";
+            this.columnHeader4.Width = 70;
             // 
             // txbTotalPrice
             // 
             this.txbTotalPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txbTotalPrice.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbTotalPrice.Location = new System.Drawing.Point(602, 461);
+            this.txbTotalPrice.Location = new System.Drawing.Point(640, 461);
             this.txbTotalPrice.Name = "txbTotalPrice";
             this.txbTotalPrice.ReadOnly = true;
             this.txbTotalPrice.Size = new System.Drawing.Size(108, 26);
@@ -193,7 +202,7 @@
             this.rbBSearchByKey.Size = new System.Drawing.Size(224, 101);
             this.rbBSearchByKey.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.rbBSearchByKey.TabIndex = 5;
-            this.rbBSearchByKey.Text = "Tìm theo tên món";
+            this.rbBSearchByKey.Text = "Tìm kiếm theo tên món";
             // 
             // btnFind
             // 
@@ -418,9 +427,9 @@
             // 
             this.btnAddFood.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddFood.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAddFood.Location = new System.Drawing.Point(119, 51);
+            this.btnAddFood.Location = new System.Drawing.Point(110, 50);
             this.btnAddFood.Name = "btnAddFood";
-            this.btnAddFood.Size = new System.Drawing.Size(108, 30);
+            this.btnAddFood.Size = new System.Drawing.Size(117, 30);
             this.btnAddFood.TabIndex = 6;
             this.btnAddFood.Text = "Thêm";
             this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
@@ -488,7 +497,7 @@
             this.btnPay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPay.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPay.Location = new System.Drawing.Point(740, 450);
+            this.btnPay.Location = new System.Drawing.Point(766, 450);
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(141, 49);
             this.btnPay.TabIndex = 31;
@@ -529,11 +538,23 @@
             this.timer2.Interval = 30;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // labelX1
+            // 
+            this.labelX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelX1.Location = new System.Drawing.Point(571, 461);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(57, 23);
+            this.labelX1.TabIndex = 34;
+            this.labelX1.Text = "Tổng tiền";
+            // 
             // formTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(920, 507);
+            this.Controls.Add(this.labelX1);
             this.Controls.Add(this.pbMoveCar);
             this.Controls.Add(this.bunifuCustomLabel1);
             this.Controls.Add(this.btnPay);
@@ -603,5 +624,7 @@
         private System.Windows.Forms.PictureBox pbMoveCar;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private DevComponents.DotNetBar.LabelX labelX1;
     }
 }

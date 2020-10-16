@@ -76,11 +76,29 @@
     <Compile Include="formAccount.Designer.cs">
       <DependentUpon>formAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="formDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formDiscount.Designer.cs">
+      <DependentUpon>formDiscount.cs</DependentUpon>
+    </Compile>
     <Compile Include="formFoods.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="formFoods.Designer.cs">
       <DependentUpon>formFoods.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formLoginFacebook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formLoginFacebook.Designer.cs">
+      <DependentUpon>formLoginFacebook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formRevenue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formRevenue.Designer.cs">
+      <DependentUpon>formRevenue.cs</DependentUpon>
     </Compile>
     <Compile Include="formUpdateInfor.cs">
       <SubType>Form</SubType>
@@ -129,8 +147,17 @@
     <EmbeddedResource Include="formAccount.resx">
       <DependentUpon>formAccount.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formDiscount.resx">
+      <DependentUpon>formDiscount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formFoods.resx">
       <DependentUpon>formFoods.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formLoginFacebook.resx">
+      <DependentUpon>formLoginFacebook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formRevenue.resx">
+      <DependentUpon>formRevenue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formUpdateInfor.resx">
       <DependentUpon>formUpdateInfor.cs</DependentUpon>

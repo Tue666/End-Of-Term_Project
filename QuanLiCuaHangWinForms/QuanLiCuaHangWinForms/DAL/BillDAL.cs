@@ -14,7 +14,27 @@ namespace QuanLiCuaHangWinForms.DAL
         private static BillDAL singleton;
 
         public static BillDAL Singleton { get { if (singleton == null) singleton = new BillDAL(); return singleton; } private set => singleton = value; }
-    
+
+        public float getAllDiscount(int idBill)
+        {
+            float result = 0;
+            string query = "SELECT * FROM dbo.BillInFo WHERE idBill = " + idBill;
+            DataTable data = Database.Singleton.ExucuteQuery(query);
+            foreach (DataRow item in data.Rows)
+            {
+                int idFood = Convert.ToInt32(item["idFood"].ToString());
+                string newQuery = "SELECT Discount FROM dbo.Food WHERE ID = " + idFood;
+                result = result + (float)Convert.ToDouble(Database.Singleton.ExucuteScalar(newQuery));
+            }
+
+            return result;
+        }
+        public DataTable showAllBill(DateTime? dayCheckIn, DateTime? dayCheckOut)
+        {
+            string query = "SELECT tf.TableName AS [Bàn], b.allDiscount AS [Tổng khuyến mãi], b.totalPrice AS [Tổng tiền], b.DayCheckIn AS [Ngày vào], b.DayCheckOut AS [Ngày ra], b.Status AS [Tình trạng] FROM dbo.Bill AS b, dbo.TableFood AS tf WHERE b.idTable = tf.ID AND b.DayCheckIn >= '20201001' AND b.DayCheckOut <= '20201031' AND b.Status = 1";
+            DataTable data = Database.Singleton.ExucuteQuery(query);
+            return data;
+        }
         public int getBillIDByTableID(int tableID)
         {
             string query = "SELECT * FROM Bill WHERE idTable = " + tableID + " AND Status = 0";
@@ -39,10 +59,10 @@ namespace QuanLiCuaHangWinForms.DAL
             return (int)Database.Singleton.ExucuteScalar("SELECT MAX(ID) FROM Bill");
         }
 
-        public void checkOut(int idBill)
+        public void checkOut(int idBill, float totalPrice, float allDiscount)
         {
-            string query = "EXEC USP_CheckOut @idBill";
-            Database.Singleton.ExucuteNonQuery(query, new object[] { idBill});
+            string query = "EXEC USP_CheckOut @idBill , @totalPrice , @allDiscount";
+            Database.Singleton.ExucuteNonQuery(query, new object[] { idBill, totalPrice, allDiscount});
         }
     }
 }

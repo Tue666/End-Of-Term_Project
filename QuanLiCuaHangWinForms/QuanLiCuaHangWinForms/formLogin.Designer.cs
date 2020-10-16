@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formLogin));
             this.txbName = new System.Windows.Forms.TextBox();
             this.lbSEUserName = new System.Windows.Forms.Label();
@@ -35,12 +36,16 @@
             this.txbPass = new System.Windows.Forms.TextBox();
             this.btnRegis = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.ptbLogo = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnExit = new Bunifu.Framework.UI.BunifuImageButton();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbLogo)).BeginInit();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pBFacebook = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ptbLogo = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBFacebook)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // txbName
@@ -54,7 +59,7 @@
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(261, 18);
             this.txbName.TabIndex = 0;
-            this.txbName.Text = "admin";
+            this.txbName.Text = "Tên đăng nhập ....";
             this.txbName.Click += new System.EventHandler(this.txbName_Click);
             this.txbName.Enter += new System.EventHandler(this.txbName_Enter);
             // 
@@ -87,7 +92,7 @@
             this.txbPass.Name = "txbPass";
             this.txbPass.Size = new System.Drawing.Size(261, 18);
             this.txbPass.TabIndex = 1;
-            this.txbPass.Text = "123";
+            this.txbPass.Text = "Mật khẩu ....";
             this.txbPass.Click += new System.EventHandler(this.txbPass_Click);
             this.txbPass.TextChanged += new System.EventHandler(this.txbPass_TextChanged);
             this.txbPass.Enter += new System.EventHandler(this.txbPass_Enter);
@@ -97,8 +102,8 @@
             this.btnRegis.BackColor = System.Drawing.Color.Transparent;
             this.btnRegis.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegis.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnRegis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegis.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegis.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRegis.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegis.ForeColor = System.Drawing.Color.White;
             this.btnRegis.Location = new System.Drawing.Point(28, 324);
             this.btnRegis.Name = "btnRegis";
@@ -113,7 +118,7 @@
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.btnLogin.Location = new System.Drawing.Point(28, 283);
             this.btnLogin.Name = "btnLogin";
@@ -123,41 +128,6 @@
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             this.btnLogin.MouseHover += new System.EventHandler(this.btnLogin_MouseHover);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.Location = new System.Drawing.Point(110, 397);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 16);
-            this.label3.TabIndex = 32;
-            this.label3.Text = "Đăng nhập bằng";
-            // 
-            // ptbLogo
-            // 
-            this.ptbLogo.BackColor = System.Drawing.Color.Transparent;
-            this.ptbLogo.Image = ((System.Drawing.Image)(resources.GetObject("ptbLogo.Image")));
-            this.ptbLogo.Location = new System.Drawing.Point(96, 2);
-            this.ptbLogo.Name = "ptbLogo";
-            this.ptbLogo.Size = new System.Drawing.Size(104, 87);
-            this.ptbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptbLogo.TabIndex = 34;
-            this.ptbLogo.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Mistral", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(143, 72);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 33);
-            this.label4.TabIndex = 35;
-            this.label4.Text = "Nhóm 5";
             // 
             // btnExit
             // 
@@ -173,6 +143,63 @@
             this.btnExit.Zoom = 10;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.Location = new System.Drawing.Point(110, 382);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 16);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "Đăng nhập bằng";
+            // 
+            // pBFacebook
+            // 
+            this.pBFacebook.BackColor = System.Drawing.Color.Transparent;
+            this.pBFacebook.Image = ((System.Drawing.Image)(resources.GetObject("pBFacebook.Image")));
+            this.pBFacebook.Location = new System.Drawing.Point(48, 406);
+            this.pBFacebook.Name = "pBFacebook";
+            this.pBFacebook.Size = new System.Drawing.Size(56, 52);
+            this.pBFacebook.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pBFacebook.TabIndex = 37;
+            this.pBFacebook.TabStop = false;
+            this.pBFacebook.Click += new System.EventHandler(this.pBFacebook_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Mistral", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(143, 72);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 33);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "Nhóm 5";
+            // 
+            // ptbLogo
+            // 
+            this.ptbLogo.BackColor = System.Drawing.Color.Transparent;
+            this.ptbLogo.Image = ((System.Drawing.Image)(resources.GetObject("ptbLogo.Image")));
+            this.ptbLogo.Location = new System.Drawing.Point(96, 2);
+            this.ptbLogo.Name = "ptbLogo";
+            this.ptbLogo.Size = new System.Drawing.Size(104, 87);
+            this.ptbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptbLogo.TabIndex = 34;
+            this.ptbLogo.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 1;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // formLogin
             // 
             this.AcceptButton = this.btnLogin;
@@ -182,6 +209,7 @@
             this.BackgroundImage = global::QuanLiCuaHangWinForms.Properties.Resources.backgroundLogin;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(314, 470);
+            this.Controls.Add(this.pBFacebook);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.ptbLogo);
@@ -192,13 +220,17 @@
             this.Controls.Add(this.txbPass);
             this.Controls.Add(this.lbSEUserName);
             this.Controls.Add(this.txbName);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "formLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formAccount_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.ptbLogo)).EndInit();
+            this.Load += new System.EventHandler(this.formLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBFacebook)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,10 +243,13 @@
         private System.Windows.Forms.TextBox txbPass;
         private System.Windows.Forms.Button btnRegis;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox ptbLogo;
-        private System.Windows.Forms.Label label4;
         private Bunifu.Framework.UI.BunifuImageButton btnExit;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pBFacebook;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox ptbLogo;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 

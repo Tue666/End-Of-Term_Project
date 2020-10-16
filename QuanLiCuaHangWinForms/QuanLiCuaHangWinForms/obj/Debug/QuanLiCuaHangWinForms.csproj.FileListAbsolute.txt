@@ -34,3 +34,6 @@ D:\ti\Winform\End-Of-Term_Project\QuanLiCuaHangWinForms\QuanLiCuaHangWinForms\ob
 D:\ti\Winform\End-Of-Term_Project\QuanLiCuaHangWinForms\QuanLiCuaHangWinForms\obj\Debug\QuanLiCuaHangWinForms.pdb
 D:\ti\Winform\End-Of-Term_Project\QuanLiCuaHangWinForms\QuanLiCuaHangWinForms\obj\Debug\QuanLiCuaHangWinForms.formUpdateInfor.resources
 D:\ti\Winform\End-Of-Term_Project\QuanLiCuaHangWinForms\QuanLiCuaHangWinForms\obj\Debug\QuanLiCuaHangWinForms.formUpdatePass.resources
+D:\ti\Winform\End-Of-Term_Project\QuanLiCuaHangWinForms\QuanLiCuaHangWinForms\obj\Debug\QuanLiCuaHangWinForms.formRevenue.resources
+D:\ti\Winform\End-Of-Term_Project\QuanLiCuaHangWinForms\QuanLiCuaHangWinForms\obj\Debug\QuanLiCuaHangWinForms.formDiscount.resources
+D:\ti\Winform\End-Of-Term_Project\QuanLiCuaHangWinForms\QuanLiCuaHangWinForms\obj\Debug\QuanLiCuaHangWinForms.formLoginFacebook.resources

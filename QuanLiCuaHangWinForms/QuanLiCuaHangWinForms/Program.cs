@@ -16,7 +16,7 @@ namespace QuanLiCuaHangWinForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new formMainMenu());
+            Application.Run(new formLogin());
         }
     }
 }

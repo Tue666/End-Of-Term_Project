@@ -50,6 +50,7 @@ namespace QuanLiCuaHangWinForms
                 f.TopLevel = false;
                 f.Dock = DockStyle.Fill;
                 tab.AttachedControl.Controls.Add(f);
+                f.FormBorderStyle = FormBorderStyle.None;
                 f.Show();
                 tMenu.SelectedTab = tab;
             }
@@ -60,13 +61,11 @@ namespace QuanLiCuaHangWinForms
         private void btnInfo_Click(object sender, EventArgs e)
         {
             formAccount fAccount = new formAccount();
-            fAccount.FormBorderStyle = FormBorderStyle.None;
             loadTab(fAccount, "Thông tin");
         }
         private void btnBook_Click(object sender, EventArgs e)
         {
             formTable fTable = new formTable();
-            fTable.FormBorderStyle = FormBorderStyle.None;
             loadTab(fTable, "Bàn ăn");
         }
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -98,23 +97,23 @@ namespace QuanLiCuaHangWinForms
         }
         private void btnDiscount_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hiện tại đang không có chương trình khuyến mãi nào :D", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            formDiscount fDiscount = new formDiscount();
+            loadTab(fDiscount, "Giảm giá");
         }
         private void btnAccount_Click(object sender, EventArgs e)
         {
             formUsers fAdmin = new formUsers();
-            fAdmin.TopMost = false;
-            fAdmin.Dock = DockStyle.Fill;
             loadTab(fAdmin, "Admin");
-            fAdmin.FormBorderStyle = FormBorderStyle.None;
         }
         private void btnFood_Click(object sender, EventArgs e)
         {
             formFoods fFood = new formFoods();
-            fFood.TopMost = false;
-            fFood.Dock = DockStyle.Fill;
             loadTab(fFood, "Thức ăn");
-            fFood.FormBorderStyle = FormBorderStyle.None;
+        }
+        private void btnRevenue_Click(object sender, EventArgs e)
+        {
+            formRevenue fRevenue = new formRevenue();
+            loadTab(fRevenue, "Doanh thu");
         }
         #endregion
     }

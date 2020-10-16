@@ -14,6 +14,7 @@ namespace QuanLiCuaHangWinForms
 {
     public partial class formLogin : Form
     {
+        formLoginFacebook fLoginFacebook = new formLoginFacebook();
         public formLogin()
         {
             InitializeComponent();
@@ -57,7 +58,6 @@ namespace QuanLiCuaHangWinForms
                 e.Cancel = true;
             }
         }
-
         private void BtnAdmin_Click(object sender, EventArgs e)
         {
             formUsers fAdmin = new formUsers();
@@ -90,6 +90,35 @@ namespace QuanLiCuaHangWinForms
         {
             btnLogin.BackColor = SystemColors.Highlight;
         }
+        private void pBFacebook_Click(object sender, EventArgs e)
+        {
+            //fLoginFacebook = new formLoginFacebook();
+            timer1.Start();
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            fLoginFacebook.Left += 10;
+            if (fLoginFacebook.Left >= 835)
+            {
+                timer1.Stop();
+                fLoginFacebook.TopMost = true;
+                timer2.Start();
+            }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            fLoginFacebook.Left -= 10;
+            if (fLoginFacebook.Left <= 527)
+            {
+                timer2.Stop();
+            }
+        }
+        private void formLogin_Load(object sender, EventArgs e)
+        {
+            fLoginFacebook.Show();
+        }
+
         #endregion
     }
 }

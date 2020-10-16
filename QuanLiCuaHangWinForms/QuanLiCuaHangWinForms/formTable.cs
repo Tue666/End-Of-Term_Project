@@ -28,6 +28,7 @@ namespace QuanLiCuaHangWinForms
         #region Methods
         private void searchFood(string foodName)
         {
+            cbSearchedItem.Items.Clear();
             List<Food> listFoods = FoodDAL.Singleton.searchFood(foodName);
             MessageBox.Show("Tìm thấy " + listFoods.Count() + " kết quả", "Thông báo", MessageBoxButtons.OK);
             foreach (Food item in listFoods)
@@ -57,10 +58,10 @@ namespace QuanLiCuaHangWinForms
             {
                 if (i == 1 || i == 2 || i == 3 || i == 4) y = 65;
                 else y = 235;
-                if (i == 1 || i == 5) x = 45;
-                else if (i == 2 || i == 6) x = 217;
-                else if (i == 3 || i == 7) x = 472;
-                else x = 644;
+                if (i == 1 || i == 5) x = 30;
+                else if (i == 2 || i == 6) x = 202;
+                else if (i == 3 || i == 7) x = 457;
+                else x = 629;
                 buttonList[i] = new Button() { Width = TableDAL.TableW, Height = TableDAL.TableH };
                 buttonList[i].Text = item.Name + Environment.NewLine + item.Status;
                 buttonList[i].Location = new Point(x, y);
@@ -83,6 +84,7 @@ namespace QuanLiCuaHangWinForms
             {
                 ListViewItem lsvItem = new ListViewItem(item.Name.ToString());
                 lsvItem.SubItems.Add(item.Quantity.ToString());
+                lsvItem.SubItems.Add(item.Discount.ToString());
                 lsvItem.SubItems.Add(item.Totalprice.ToString());
                 lsvBillInfo.Items.Add(lsvItem);
                 totalPrice += item.Totalprice;
@@ -170,33 +172,49 @@ namespace QuanLiCuaHangWinForms
                 string foodName = (cbFood.SelectedItem as Food).FoodName;
                 if (idBill == -1) //chưa có bill
                 {
-                    BillDAL.Singleton.insertBill(table.Id);
-                    BillInfoDAL.Singleton.insertBillInfo(BillDAL.Singleton.getMaxBillID(), idFood, (int)nmQuantityFood.Value);
-                    TableDAL.Singleton.changeStatus(BillDAL.Singleton.getMaxBillID());
+                    if (nmQuantityFood.Value > 0)
+                    {
+                        BillDAL.Singleton.insertBill(table.Id);
+                        BillInfoDAL.Singleton.insertBillInfo(BillDAL.Singleton.getMaxBillID(), idFood, (int)nmQuantityFood.Value);
+                        TableDAL.Singleton.changeStatus(BillDAL.Singleton.getMaxBillID());
+                    }
                 }
                 else //đã có bill
                 {
-                    BillInfoDAL.Singleton.insertBillInfo(idBill, idFood, (int)nmQuantityFood.Value);
-                    TableDAL.Singleton.changeStatus(idBill);
+                    if (nmQuantityFood.Value > 0)
+                    {
+                        BillInfoDAL.Singleton.insertBillInfo(idBill, idFood, (int)nmQuantityFood.Value);
+                        TableDAL.Singleton.changeStatus(idBill);
+                    }
                 }
                 showBill(table.Id);
-                buttonList[table.Id].Text = "Bàn " + table.Id + Environment.NewLine + "Có người";
-                buttonList[table.Id].BackColor = Color.Pink;
+                if (nmQuantityFood.Value > 0)
+                {
+                    buttonList[table.Id].Text = "Bàn " + table.Id + Environment.NewLine + "Có người";
+                    buttonList[table.Id].BackColor = Color.Pink;
+                }
             }
         }
         private void btnPay_Click(object sender, EventArgs e)
         {
             Table table = lsvBillInfo.Tag as Table;
-            int idBill = BillDAL.Singleton.getBillIDByTableID(table.Id);
-            if (idBill != -1) //có bill
+            if (table == null)
             {
-                if (MessageBox.Show("Thanh toán?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                MessageBox.Show("Xin chọn bàn", "Thông báo");
+            }
+            else
+            {
+                int idBill = BillDAL.Singleton.getBillIDByTableID(table.Id);
+                if (idBill != -1) //có bill
                 {
-                    BillDAL.Singleton.checkOut(idBill);
-                    TableDAL.Singleton.changeStatus(idBill);
-                    showBill(table.Id);
-                    buttonList[table.Id].BackColor = Color.Aqua;
-                    buttonList[table.Id].Text = "Bàn " + table.Id + Environment.NewLine + "Trống";
+                    if (MessageBox.Show("Thanh toán?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    {
+                        BillDAL.Singleton.checkOut(idBill, (float)Convert.ToDouble(txbTotalPrice.Text.Split(',')[0].Replace('.',',')), BillDAL.Singleton.getAllDiscount(idBill));
+                        TableDAL.Singleton.changeStatus(idBill);
+                        showBill(table.Id);
+                        buttonList[table.Id].BackColor = Color.Aqua;
+                        buttonList[table.Id].Text = "Bàn " + table.Id + Environment.NewLine + "Trống";
+                    }
                 }
             }
         }

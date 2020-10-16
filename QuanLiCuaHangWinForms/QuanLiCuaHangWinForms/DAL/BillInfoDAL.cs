@@ -16,11 +16,10 @@ namespace QuanLiCuaHangWinForms.DAL
             get { if (singleton == null) singleton = new BillInfoDAL(); return singleton; } 
             private set => singleton = value; 
         }
-
         public List<BillInfo> getBillInfoByTableID(int tableID)
         {
             List<BillInfo> listBillInfo = new List<BillInfo>();
-            string query = "SELECT f.FoodName, bi.QuantityFood, f.Price*bi.QuantityFood AS TotalPrice FROM BillInFo AS bi, Bill AS b, Food AS f WHERE bi.idBill = b.ID AND bi.idFood = f.ID AND b.idTable = " + tableID + " AND b.Status = 0";
+            string query = "EXEC USP_ShowBill " + tableID;
             DataTable data = Database.Singleton.ExucuteQuery(query);
             foreach (DataRow item in data.Rows)
             {
