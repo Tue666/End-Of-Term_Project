@@ -106,7 +106,7 @@ namespace QuanLiCuaHangWinForms
             pbMoveCar.Location = new Point(pbMoveCar.Location.X + 1, pbMoveCar.Location.Y);
             if (pbMoveCar.Location.X >= 700)
             {
-                pbMoveCar.Image = new Bitmap(@"D:\ti\Winform\End-Of-Term_Project\Images\Untitled.png");
+                pbMoveCar.Image = new Bitmap(Application.StartupPath + @"\Untitled.png");
                 timer1.Stop();
                 timer2.Start();
             }
@@ -117,7 +117,7 @@ namespace QuanLiCuaHangWinForms
             pbMoveCar.Location = new Point(pbMoveCar.Location.X - 1, pbMoveCar.Location.Y);
             if (pbMoveCar.Location.X <= 15)
             {
-                pbMoveCar.Image = new Bitmap(@"D:\ti\Winform\End-Of-Term_Project\Images\4503.png_860.png");
+                pbMoveCar.Image = new Bitmap(Application.StartupPath + @"\4503.png_860.png");
                 timer2.Stop();
                 timer1.Start();
             }
@@ -168,8 +168,7 @@ namespace QuanLiCuaHangWinForms
             else
             {
                 int idBill = BillDAL.Singleton.getBillIDByTableID(table.Id);
-                int idFood = (cbFood.SelectedItem as Food).Id;
-                string foodName = (cbFood.SelectedItem as Food).FoodName;
+                int idFood = FoodDAL.Singleton.getFoodIDByFoodName(txbSelectedItem.Text);
                 if (idBill == -1) //chưa có bill
                 {
                     if (nmQuantityFood.Value > 0)
@@ -181,10 +180,21 @@ namespace QuanLiCuaHangWinForms
                 }
                 else //đã có bill
                 {
-                    if (nmQuantityFood.Value > 0)
+                    if (BillInfoDAL.Singleton.checkExistFood(idFood, idBill))
                     {
-                        BillInfoDAL.Singleton.insertBillInfo(idBill, idFood, (int)nmQuantityFood.Value);
-                        TableDAL.Singleton.changeStatus(idBill);
+                        if (nmQuantityFood.Value != 0)
+                        {
+                            BillInfoDAL.Singleton.insertBillInfo(idBill, idFood, (int)nmQuantityFood.Value);
+                            TableDAL.Singleton.changeStatus(idBill);
+                        }
+                    }
+                    else
+                    {
+                        if (nmQuantityFood.Value > 0)
+                        {
+                            BillInfoDAL.Singleton.insertBillInfo(idBill, idFood, (int)nmQuantityFood.Value);
+                            TableDAL.Singleton.changeStatus(idBill);
+                        }
                     }
                 }
                 showBill(table.Id);

@@ -16,6 +16,11 @@ namespace QuanLiCuaHangWinForms.DAL
             get { if (singleton == null) singleton = new BillInfoDAL(); return singleton; } 
             private set => singleton = value; 
         }
+        public bool checkExistFood(int foodID, int billID)
+        {
+            string query = "SELECT * FROM dbo.BillInFo WHERE idFood = " + foodID + " AND idBill = " + billID + "";
+            return Convert.ToInt32(Database.Singleton.ExucuteScalar(query)) > 0;
+        }
         public List<BillInfo> getBillInfoByTableID(int tableID)
         {
             List<BillInfo> listBillInfo = new List<BillInfo>();

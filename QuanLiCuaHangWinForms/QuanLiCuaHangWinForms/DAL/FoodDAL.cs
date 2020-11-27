@@ -13,6 +13,13 @@ namespace QuanLiCuaHangWinForms.DAL
         private static FoodDAL singleton;
 
         public static FoodDAL Singleton { get { if (singleton == null) singleton = new FoodDAL(); return singleton; } private set => singleton = value; }
+
+        public int getFoodIDByFoodName(string foodName)
+        {
+            string query = "SELECT ID FROM dbo.Food WHERE FoodName = N'" + foodName + "'";
+            return Convert.ToInt32(Database.Singleton.ExucuteScalar(query));
+            
+        }
         public List<Food> listFoodByCateID(int cateID)
         {
             List<Food> listFood = new List<Food>();

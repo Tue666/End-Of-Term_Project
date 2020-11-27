@@ -31,7 +31,7 @@ namespace QuanLiCuaHangWinForms.DAL
         }
         public DataTable showAllBill(DateTime? dayCheckIn, DateTime? dayCheckOut)
         {
-            string query = "SELECT tf.TableName AS [Bàn], b.allDiscount AS [Tổng khuyến mãi], b.totalPrice AS [Tổng tiền], b.DayCheckIn AS [Ngày vào], b.DayCheckOut AS [Ngày ra], b.Status AS [Tình trạng] FROM dbo.Bill AS b, dbo.TableFood AS tf WHERE b.idTable = tf.ID AND b.DayCheckIn >= '20201001' AND b.DayCheckOut <= '20201031' AND b.Status = 1";
+            string query = "SELECT tf.TableName AS [Bàn], b.allDiscount AS [Tổng khuyến mãi], b.totalPrice AS [Tổng tiền], b.DayCheckIn AS [Ngày vào], b.DayCheckOut AS [Ngày ra], b.Status AS [Tình trạng] FROM dbo.Bill AS b, dbo.TableFood AS tf WHERE b.idTable = tf.ID AND b.DayCheckIn >= '" + dayCheckIn.ToString() + "' AND b.DayCheckOut <= '" + dayCheckOut.ToString() + "' AND b.Status = 1";
             DataTable data = Database.Singleton.ExucuteQuery(query);
             return data;
         }

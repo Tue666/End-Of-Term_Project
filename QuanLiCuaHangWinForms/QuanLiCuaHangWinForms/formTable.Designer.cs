@@ -437,6 +437,11 @@
             // nmQuantityFood
             // 
             this.nmQuantityFood.Location = new System.Drawing.Point(271, 27);
+            this.nmQuantityFood.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.nmQuantityFood.Name = "nmQuantityFood";
             this.nmQuantityFood.Size = new System.Drawing.Size(46, 20);
             this.nmQuantityFood.TabIndex = 5;

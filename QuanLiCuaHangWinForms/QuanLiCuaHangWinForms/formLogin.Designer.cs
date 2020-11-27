@@ -53,7 +53,7 @@
             this.txbName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txbName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbName.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbName.ForeColor = System.Drawing.SystemColors.Info;
+            this.txbName.ForeColor = System.Drawing.Color.Transparent;
             this.txbName.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txbName.Location = new System.Drawing.Point(28, 128);
             this.txbName.Name = "txbName";
@@ -86,7 +86,7 @@
             this.txbPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txbPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbPass.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbPass.ForeColor = System.Drawing.SystemColors.Info;
+            this.txbPass.ForeColor = System.Drawing.Color.Transparent;
             this.txbPass.HideSelection = false;
             this.txbPass.Location = new System.Drawing.Point(28, 180);
             this.txbPass.Name = "txbPass";
@@ -158,6 +158,7 @@
             // pBFacebook
             // 
             this.pBFacebook.BackColor = System.Drawing.Color.Transparent;
+            this.pBFacebook.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pBFacebook.Image = ((System.Drawing.Image)(resources.GetObject("pBFacebook.Image")));
             this.pBFacebook.Location = new System.Drawing.Point(48, 406);
             this.pBFacebook.Name = "pBFacebook";
@@ -220,7 +221,7 @@
             this.Controls.Add(this.txbPass);
             this.Controls.Add(this.lbSEUserName);
             this.Controls.Add(this.txbName);
-            this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "formLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
