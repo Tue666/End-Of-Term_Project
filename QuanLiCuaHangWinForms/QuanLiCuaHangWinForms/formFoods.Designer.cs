@@ -59,9 +59,16 @@
             this.gpnlFood = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.cbFoodCate = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.ckbDiscount = new System.Windows.Forms.CheckBox();
+            this.txbDiscount = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.lbDiscount = new System.Windows.Forms.Label();
+            this.pcImage = new System.Windows.Forms.PictureBox();
+            this.btnEditImage = new DevComponents.DotNetBar.ButtonX();
+            this.btnDeleteImage = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFood)).BeginInit();
             this.gpnlAction.SuspendLayout();
             this.gpnlFood.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcImage)).BeginInit();
             this.SuspendLayout();
             // 
             // ckbPrice
@@ -391,15 +398,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gpnlFood.CanvasColor = System.Drawing.SystemColors.Control;
             this.gpnlFood.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.gpnlFood.Controls.Add(this.btnDeleteImage);
+            this.gpnlFood.Controls.Add(this.btnEditImage);
+            this.gpnlFood.Controls.Add(this.pcImage);
             this.gpnlFood.Controls.Add(this.cbFoodCate);
             this.gpnlFood.Controls.Add(this.label1);
+            this.gpnlFood.Controls.Add(this.ckbDiscount);
             this.gpnlFood.Controls.Add(this.ckbPrice);
             this.gpnlFood.Controls.Add(this.ckbFoodCate);
             this.gpnlFood.Controls.Add(this.ckbFoodName);
             this.gpnlFood.Controls.Add(this.ckbID);
+            this.gpnlFood.Controls.Add(this.txbDiscount);
             this.gpnlFood.Controls.Add(this.txbPrice);
             this.gpnlFood.Controls.Add(this.txbFoodName);
             this.gpnlFood.Controls.Add(this.txbFoodID);
+            this.gpnlFood.Controls.Add(this.lbDiscount);
             this.gpnlFood.Controls.Add(this.lbPrice);
             this.gpnlFood.Controls.Add(this.lbFoodCate);
             this.gpnlFood.Controls.Add(this.lbFoodName);
@@ -450,6 +463,74 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Ẩn / Hiện";
             // 
+            // ckbDiscount
+            // 
+            this.ckbDiscount.AutoSize = true;
+            this.ckbDiscount.Checked = true;
+            this.ckbDiscount.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckbDiscount.Location = new System.Drawing.Point(320, 187);
+            this.ckbDiscount.Name = "ckbDiscount";
+            this.ckbDiscount.Size = new System.Drawing.Size(15, 14);
+            this.ckbDiscount.TabIndex = 6;
+            this.ckbDiscount.UseVisualStyleBackColor = true;
+            this.ckbDiscount.Click += new System.EventHandler(this.ckbDiscount_Click);
+            // 
+            // txbDiscount
+            // 
+            // 
+            // 
+            // 
+            this.txbDiscount.Border.Class = "TextBoxBorder";
+            this.txbDiscount.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbDiscount.Location = new System.Drawing.Point(109, 183);
+            this.txbDiscount.Name = "txbDiscount";
+            this.txbDiscount.Size = new System.Drawing.Size(205, 22);
+            this.txbDiscount.TabIndex = 4;
+            // 
+            // lbDiscount
+            // 
+            this.lbDiscount.AutoSize = true;
+            this.lbDiscount.BackColor = System.Drawing.Color.Transparent;
+            this.lbDiscount.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDiscount.Location = new System.Drawing.Point(12, 186);
+            this.lbDiscount.Name = "lbDiscount";
+            this.lbDiscount.Size = new System.Drawing.Size(98, 15);
+            this.lbDiscount.TabIndex = 4;
+            this.lbDiscount.Text = "Khuyến mãi (%)";
+            // 
+            // pcImage
+            // 
+            this.pcImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pcImage.Location = new System.Drawing.Point(15, 214);
+            this.pcImage.Name = "pcImage";
+            this.pcImage.Size = new System.Drawing.Size(273, 60);
+            this.pcImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcImage.TabIndex = 9;
+            this.pcImage.TabStop = false;
+            // 
+            // btnEditImage
+            // 
+            this.btnEditImage.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnEditImage.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnEditImage.Location = new System.Drawing.Point(294, 214);
+            this.btnEditImage.Name = "btnEditImage";
+            this.btnEditImage.Size = new System.Drawing.Size(62, 23);
+            this.btnEditImage.TabIndex = 10;
+            this.btnEditImage.Text = "Cập nhật";
+            this.btnEditImage.Click += new System.EventHandler(this.btnEditImage_Click);
+            // 
+            // btnDeleteImage
+            // 
+            this.btnDeleteImage.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDeleteImage.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnDeleteImage.Location = new System.Drawing.Point(294, 243);
+            this.btnDeleteImage.Name = "btnDeleteImage";
+            this.btnDeleteImage.Size = new System.Drawing.Size(62, 23);
+            this.btnDeleteImage.TabIndex = 10;
+            this.btnDeleteImage.Text = "Xóa";
+            this.btnDeleteImage.Click += new System.EventHandler(this.btnDeleteImage_Click);
+            // 
             // formFoods
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -463,6 +544,7 @@
             this.gpnlAction.ResumeLayout(false);
             this.gpnlFood.ResumeLayout(false);
             this.gpnlFood.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -498,5 +580,11 @@
         private System.Windows.Forms.ComboBox cbFoodCate;
         private DevComponents.DotNetBar.RibbonBar rbBListFood;
         private DevComponents.DotNetBar.ButtonItem btnListFood;
+        private System.Windows.Forms.CheckBox ckbDiscount;
+        private DevComponents.DotNetBar.Controls.TextBoxX txbDiscount;
+        private System.Windows.Forms.Label lbDiscount;
+        private System.Windows.Forms.PictureBox pcImage;
+        private DevComponents.DotNetBar.ButtonX btnDeleteImage;
+        private DevComponents.DotNetBar.ButtonX btnEditImage;
     }
 }

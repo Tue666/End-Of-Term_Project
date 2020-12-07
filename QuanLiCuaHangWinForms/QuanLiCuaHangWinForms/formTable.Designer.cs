@@ -38,6 +38,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txbTotalPrice = new System.Windows.Forms.TextBox();
             this.grpAction = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.pcImage = new System.Windows.Forms.PictureBox();
             this.rbBSearchByKey = new DevComponents.DotNetBar.RibbonBar();
             this.btnFind = new DevComponents.DotNetBar.ButtonX();
             this.cbSearchedItem = new System.Windows.Forms.ComboBox();
@@ -75,6 +76,7 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).BeginInit();
             this.grpAction.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcImage)).BeginInit();
             this.rbBSearchByKey.SuspendLayout();
             this.rbBSerachByCate.SuspendLayout();
             this.rbBChangeTable.SuspendLayout();
@@ -157,6 +159,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpAction.CanvasColor = System.Drawing.SystemColors.Control;
             this.grpAction.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.grpAction.Controls.Add(this.pcImage);
             this.grpAction.Controls.Add(this.rbBSearchByKey);
             this.grpAction.Controls.Add(this.rbBSerachByCate);
             this.grpAction.Controls.Add(this.rbBChangeTable);
@@ -187,6 +190,20 @@
             this.grpAction.TabIndex = 30;
             this.grpAction.Text = "Tác vụ";
             // 
+            // pcImage
+            // 
+            this.pcImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pcImage.BackColor = System.Drawing.SystemColors.Control;
+            this.pcImage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pcImage.Location = new System.Drawing.Point(762, 4);
+            this.pcImage.Name = "pcImage";
+            this.pcImage.Size = new System.Drawing.Size(10, 100);
+            this.pcImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcImage.TabIndex = 6;
+            this.pcImage.TabStop = false;
+            this.pcImage.Click += new System.EventHandler(this.pcImage_Click);
+            // 
             // rbBSearchByKey
             // 
             this.rbBSearchByKey.AutoOverflowEnabled = true;
@@ -199,7 +216,7 @@
             this.controlContainerItem1});
             this.rbBSearchByKey.Location = new System.Drawing.Point(216, 4);
             this.rbBSearchByKey.Name = "rbBSearchByKey";
-            this.rbBSearchByKey.Size = new System.Drawing.Size(224, 101);
+            this.rbBSearchByKey.Size = new System.Drawing.Size(215, 101);
             this.rbBSearchByKey.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.rbBSearchByKey.TabIndex = 5;
             this.rbBSearchByKey.Text = "Tìm kiếm theo tên món";
@@ -333,6 +350,7 @@
             // 
             // rbBChangeTable
             // 
+            this.rbBChangeTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rbBChangeTable.AutoOverflowEnabled = true;
             this.rbBChangeTable.Controls.Add(this.btnSwapTable);
             this.rbBChangeTable.Controls.Add(this.cbTableList);
@@ -416,7 +434,7 @@
             this.rbBAddFood.Controls.Add(this.lbSinglePrice);
             this.rbBAddFood.Controls.Add(this.txbSelectedItem);
             this.rbBAddFood.Controls.Add(this.lbSelectedItem);
-            this.rbBAddFood.Location = new System.Drawing.Point(446, 3);
+            this.rbBAddFood.Location = new System.Drawing.Point(437, 3);
             this.rbBAddFood.Name = "rbBAddFood";
             this.rbBAddFood.Size = new System.Drawing.Size(323, 101);
             this.rbBAddFood.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
@@ -479,6 +497,7 @@
             this.txbSelectedItem.ReadOnly = true;
             this.txbSelectedItem.Size = new System.Drawing.Size(176, 20);
             this.txbSelectedItem.TabIndex = 1;
+            this.txbSelectedItem.TextChanged += new System.EventHandler(this.txbSelectedItem_TextChanged);
             // 
             // lbSelectedItem
             // 
@@ -572,6 +591,7 @@
             this.Text = "Quản lí";
             ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).EndInit();
             this.grpAction.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pcImage)).EndInit();
             this.rbBSearchByKey.ResumeLayout(false);
             this.rbBSearchByKey.PerformLayout();
             this.rbBSerachByCate.ResumeLayout(false);
@@ -631,5 +651,6 @@
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private DevComponents.DotNetBar.LabelX labelX1;
+        private System.Windows.Forms.PictureBox pcImage;
     }
 }

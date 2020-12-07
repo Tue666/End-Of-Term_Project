@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -16,6 +17,7 @@ namespace QuanLiCuaHangWinForms
 {
     public partial class formTable : Form
     {
+        string nameImage = "";
         public formTable()
         {
             InitializeComponent();
@@ -267,6 +269,28 @@ namespace QuanLiCuaHangWinForms
         private void btnFind_Click(object sender, EventArgs e)
         {
             searchFood(txbSearch.Text);
+        }
+        private void txbSelectedItem_TextChanged(object sender, EventArgs e)
+        {
+            int foodID = FoodDAL.Singleton.getFoodIDByFoodName(txbSelectedItem.Text);
+            Food food = FoodDAL.Singleton.getInforFood(foodID);
+            if (food.UrlImage == "")
+            {
+                pcImage.Image = new Bitmap(Application.StartupPath + '\\' + "noimage.jpg");
+                nameImage = "noimage.jpg";
+            }
+            else
+            {
+                string[] fileName = food.UrlImage.Split('\\');
+                pcImage.Image = new Bitmap(Application.StartupPath + '\\' + fileName[fileName.Length - 1]);
+                nameImage = fileName[fileName.Length - 1];
+            }
+        }
+        private void pcImage_Click(object sender, EventArgs e)
+        {
+            formImageFood fImageFood = new formImageFood();
+            fImageFood.Show();
+            fImageFood.BackgroundImage = new Bitmap(Application.StartupPath + '\\' + nameImage);
         }
         #endregion
     }

@@ -23,6 +23,11 @@ namespace QuanLiCuaHangWinForms.DAL
         
         private AccountDAL() { }
 
+        public bool changeAvatar(string filePath, int userID)
+        {
+            string query = "UPDATE dbo.Account SET urlImage = '" + filePath + "' WHERE ID = " + userID;
+            return Database.Singleton.ExucuteNonQuery(query) == 1;
+        }
         public bool Login(string userName, string passWord)
         {
             string query = "SELECT * FROM dbo.Account WHERE UserName = N'" + userName + "' AND PassWord = N'" + passWord + "'";
@@ -48,9 +53,9 @@ namespace QuanLiCuaHangWinForms.DAL
             string query = "SELECT * FROM dbo.Account";
             return Database.Singleton.ExucuteQuery(query);
         }
-        public void insertUser(string userName, string passWord, int Type, string name = "", string sex = "", int age = 0, string number = "", string email = "", string adress = "")
+        public void insertUser(string userName, string passWord, int Type, string name = "", string sex = "", int age = 0, string number = "", string email = "", string adress = "", string urlImage = "")
         {
-            string query = "INSERT dbo.Account VALUES (N'" + userName + "',N'" + passWord + "', " + Type + ",N'" + name + "',N'" + sex + "'," + age + ",N'" + number + "',N'" + email + "',N'" + adress + "')";
+            string query = "INSERT dbo.Account VALUES (N'" + userName + "',N'" + passWord + "', " + Type + ",N'" + name + "',N'" + sex + "'," + age + ",N'" + number + "',N'" + email + "',N'" + adress + "','" + urlImage + "')";
             Database.Singleton.ExucuteNonQuery(query);
         }
         public void deleteUser(int userID)

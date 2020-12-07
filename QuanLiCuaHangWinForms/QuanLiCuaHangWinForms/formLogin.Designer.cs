@@ -59,7 +59,7 @@
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(261, 18);
             this.txbName.TabIndex = 0;
-            this.txbName.Text = "Tên đăng nhập ....";
+            this.txbName.Text = "Tên đăng nhập ...";
             this.txbName.Click += new System.EventHandler(this.txbName_Click);
             this.txbName.Enter += new System.EventHandler(this.txbName_Enter);
             // 
@@ -162,7 +162,7 @@
             this.pBFacebook.Image = ((System.Drawing.Image)(resources.GetObject("pBFacebook.Image")));
             this.pBFacebook.Location = new System.Drawing.Point(48, 406);
             this.pBFacebook.Name = "pBFacebook";
-            this.pBFacebook.Size = new System.Drawing.Size(56, 52);
+            this.pBFacebook.Size = new System.Drawing.Size(54, 52);
             this.pBFacebook.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pBFacebook.TabIndex = 37;
             this.pBFacebook.TabStop = false;

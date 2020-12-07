@@ -157,6 +157,7 @@
             this.btnSaveAvatar.TabIndex = 4;
             this.btnSaveAvatar.Text = "Lưu";
             this.btnSaveAvatar.UseVisualStyleBackColor = true;
+            this.btnSaveAvatar.Click += new System.EventHandler(this.btnSaveAvatar_Click);
             // 
             // btnUpdateAvatar
             // 
@@ -167,6 +168,7 @@
             this.btnUpdateAvatar.TabIndex = 3;
             this.btnUpdateAvatar.Text = "Thay đổi";
             this.btnUpdateAvatar.UseVisualStyleBackColor = true;
+            this.btnUpdateAvatar.Click += new System.EventHandler(this.btnUpdateAvatar_Click);
             // 
             // gpnlAvatar
             // 

@@ -38,10 +38,8 @@ namespace QuanLiCuaHangWinForms
         }
         private void loadDataFoods()
         {
-            //dgvFood.Refresh();
             dgvFood.DataSource = FoodDAL.Singleton.loadDataFood();
         }
-        
         private void loadColumnFood(int index, CheckBox ck)
         {
             if (ck.Checked == true)
@@ -53,19 +51,33 @@ namespace QuanLiCuaHangWinForms
                 dgvFood.Columns[index].Visible = false;
             }
         }
-        private void insertFood(string foodName, string foodCateName, float price)
+        private void insertFood(string foodName, string foodCateName, float price, float discount)
         {
-            FoodDAL.Singleton.insertFood(foodName, foodCateName, price);
+            FoodDAL.Singleton.insertFood(foodName, foodCateName, price, discount);
         }
         private void deleteFood(int foodID)
         {
             FoodDAL.Singleton.deleteFood(foodID);
         }
-        private void editFood(int foodID, string foodName, string foodCateName, float price)
+        private void editFood(int foodID, string foodName, string foodCateName, float price, float discount)
         {
-            FoodDAL.Singleton.editFood(foodID, foodName, foodCateName, price);
+            FoodDAL.Singleton.editFood(foodID, foodName, foodCateName, price, discount);
+        }
+        private void loadImage(int foodID)
+        {
+            Food food = FoodDAL.Singleton.getInforFood(foodID);
+            if (food.UrlImage == "")
+            {
+                pcImage.Image = new Bitmap(Application.StartupPath + '\\' + "noimage.jpg");
+            }
+            else
+            {
+                string[] fileName = food.UrlImage.Split('\\');
+                pcImage.Image = new Bitmap(Application.StartupPath + '\\' + fileName[fileName.Length - 1]);
+            }
         }
         #endregion
+
 
         #region Events
         private void dgvFood_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -75,6 +87,8 @@ namespace QuanLiCuaHangWinForms
             txbFoodName.Text = dgvFood.Rows[currentRow].Cells[1].Value.ToString();
             cbFoodCate.SelectedItem = dgvFood.Rows[currentRow].Cells[2].Value.ToString();
             txbPrice.Text = dgvFood.Rows[currentRow].Cells[3].Value.ToString();
+            txbDiscount.Text = dgvFood.Rows[currentRow].Cells[4].Value.ToString();
+            loadImage(Convert.ToInt32(txbFoodID.Text));
         }
         private void ckbID_Click(object sender, EventArgs e)
         {
@@ -88,30 +102,54 @@ namespace QuanLiCuaHangWinForms
         {
             loadColumnFood(2, sender as CheckBox);
         }
-
         private void ckbPrice_Click(object sender, EventArgs e)
         {
             loadColumnFood(3, sender as CheckBox);
         }
+        private void ckbDiscount_Click(object sender, EventArgs e)
+        {
+            loadColumnFood(4, sender as CheckBox);
+        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            insertFood(txbFoodName.Text, cbFoodCate.SelectedItem.ToString(), int.Parse(txbPrice.Text));
-            MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
-            loadDataFoods();
+            if (txbFoodName.Text != "" || txbPrice.Text!=""|| txbDiscount.Text != "")
+            {
+                insertFood(txbFoodName.Text, cbFoodCate.SelectedItem.ToString(), float.Parse(txbPrice.Text), float.Parse(txbDiscount.Text));
+                MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
+                loadDataFoods();
+            }
+            else
+            {
+                MessageBox.Show("Điền đủ thông tin để thêm", "Thông báo", MessageBoxButtons.OK);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            deleteFood(int.Parse(txbFoodID.Text));
-            MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
-            loadDataFoods();
+            if (txbFoodID.Text != "")
+            {
+                deleteFood(int.Parse(txbFoodID.Text));
+                MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                loadDataFoods();
+            }
+            else
+            {
+                MessageBox.Show("Điền mã thức ăn cần xóa", "Thông báo", MessageBoxButtons.OK);
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            editFood(int.Parse(txbFoodID.Text), txbFoodName.Text, cbFoodCate.SelectedItem.ToString(), (float)Convert.ToDouble(txbPrice.Text));
-            MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
-            loadDataFoods();
+            if (txbFoodID.Text!=""|| txbFoodName.Text!=""|| txbPrice.Text!=""|| txbDiscount.Text != "")
+            {
+                editFood(int.Parse(txbFoodID.Text), txbFoodName.Text, cbFoodCate.SelectedItem.ToString(), float.Parse(txbPrice.Text), float.Parse(txbDiscount.Text));
+                MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
+                loadDataFoods();
+            }
+            else
+            {
+                MessageBox.Show("Điền đủ thông tin để sửa", "Thông báo", MessageBoxButtons.OK);
+            }
         }
         private void btnListFood_Click(object sender, EventArgs e)
         {
@@ -119,7 +157,34 @@ namespace QuanLiCuaHangWinForms
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            searchFood(txbFoodName.Text);
+            if (txbFoodName.Text != "")
+            {
+                searchFood(txbFoodName.Text);
+            }
+            else
+            {
+                MessageBox.Show("Nhập mã thức ăn cần tìm", "Thông báo", MessageBoxButtons.OK);
+            }
+        }
+        private void btnEditImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                string[] fileName = openFile.FileName.Split('\\');
+                FoodDAL.Singleton.changeImage(Application.StartupPath + '\\' + fileName[fileName.Length - 1], Convert.ToInt32(txbFoodID.Text));
+                MessageBox.Show("Cập nhật ảnh thành công", "Thông báo", MessageBoxButtons.OK);
+                loadImage(Convert.ToInt32(txbFoodID.Text));
+                loadDataFoods();
+            }
+        }
+
+        private void btnDeleteImage_Click(object sender, EventArgs e)
+        {
+            FoodDAL.Singleton.changeImage("", Convert.ToInt32(txbFoodID.Text));
+            MessageBox.Show("Xóa ảnh thành công", "Thông báo", MessageBoxButtons.OK);
+            loadImage(Convert.ToInt32(txbFoodID.Text));
+            loadDataFoods();
         }
         #endregion
     }

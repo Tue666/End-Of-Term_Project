@@ -21,8 +21,9 @@ namespace QuanLiCuaHangWinForms.DTO
             this.number = row["Number"].ToString();
             this.email = row["Email"].ToString();
             this.adress = row["Adress"].ToString();
+            this.urlImage = row["urlImage"].ToString();
         }
-        public User(int id, string userName, string passWord, int type, string name, string sex, int age, string number, string email, string adress)
+        public User(int id, string userName, string passWord, int type, string name, string sex, int age, string number, string email, string adress, string urlImage)
         {
             this.id = id;
             this.userName = userName;
@@ -34,6 +35,7 @@ namespace QuanLiCuaHangWinForms.DTO
             this.number = number;
             this.email = email;
             this.adress = adress;
+            this.urlImage = urlImage;
         }
         private int id;
         private string userName;
@@ -45,6 +47,7 @@ namespace QuanLiCuaHangWinForms.DTO
         private string number;
         private string email;
         private string adress;
+        private string urlImage;
 
         public int Id { get => id; set => id = value; }
         public string UserName { get => userName; set => userName = value; }
@@ -56,5 +59,6 @@ namespace QuanLiCuaHangWinForms.DTO
         public string Number { get => number; set => number = value; }
         public string Email { get => email; set => email = value; }
         public string Adress { get => adress; set => adress = value; }
+        public string UrlImage { get => urlImage; set => urlImage = value; }
     }
 }

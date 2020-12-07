@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,6 +56,19 @@ namespace QuanLiCuaHangWinForms
                 dgvAccount.Columns[index].Visible = false;
             }
         }
+        private void loadImage(string userName, string passWord)
+        {
+            User user = AccountDAL.Singleton.getInforUser(userName, passWord);
+            if (user.UrlImage == "")
+            {
+                pcImage.Image = new Bitmap(Application.StartupPath + '\\' + "noimage.jpg");
+            }
+            else
+            {
+                string[] fileName = user.UrlImage.Split('\\');
+                pcImage.Image = new Bitmap(Application.StartupPath + '\\' + fileName[fileName.Length - 1]);
+            }
+        }
         #endregion
 
         #region Events
@@ -71,6 +85,7 @@ namespace QuanLiCuaHangWinForms
             txbNumber.Text = dgvAccount.Rows[currentRow].Cells[7].Value.ToString();
             txbEmail.Text = dgvAccount.Rows[currentRow].Cells[8].Value.ToString();
             txbAdress.Text = dgvAccount.Rows[currentRow].Cells[9].Value.ToString();
+            loadImage(txbUserName.Text, txbPass.Text);
         }
         private void ckbID_Click(object sender, EventArgs e)
         {
@@ -124,23 +139,44 @@ namespace QuanLiCuaHangWinForms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            insertUser(txbUserName.Text, txbPass.Text, int.Parse(txbType.Text), txbName.Text, txbSex.Text, int.Parse(txbAge.Text), txbNumber.Text, txbEmail.Text, txbAdress.Text);
-            MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
-            loadDataAccount();
+            if (txbUserName.Text != "" || txbPass.Text != "" || txbType.Text != "")
+            {
+                insertUser(txbUserName.Text, txbPass.Text, int.Parse(txbType.Text), txbName.Text, txbSex.Text, int.Parse(txbAge.Text), txbNumber.Text, txbEmail.Text, txbAdress.Text);
+                MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
+                loadDataAccount();
+            }
+            else
+            {
+                MessageBox.Show("Điền đủ thông tin để thêm", "Thông báo", MessageBoxButtons.OK);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            deleteUser(int.Parse(txbUserID.Text));
-            MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
-            loadDataAccount();
+            if (txbUserID.Text != "")
+            {
+                deleteUser(int.Parse(txbUserID.Text));
+                MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                loadDataAccount();
+            }
+            else
+            {
+                MessageBox.Show("Điền mã khách hàng cần xóa", "Thông báo", MessageBoxButtons.OK);
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            editUser(int.Parse(txbUserID.Text), txbUserName.Text, txbPass.Text, int.Parse(txbType.Text), txbName.Text, txbSex.Text, int.Parse(txbAge.Text), txbNumber.Text, txbEmail.Text, txbAdress.Text);
-            MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
-            loadDataAccount();
+            if (txbUserID.Text != ""|| txbUserName.Text != "" || txbPass.Text != "" || txbType.Text != "")
+            {
+                editUser(int.Parse(txbUserID.Text), txbUserName.Text, txbPass.Text, int.Parse(txbType.Text), txbName.Text, txbSex.Text, int.Parse(txbAge.Text), txbNumber.Text, txbEmail.Text, txbAdress.Text);
+                MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
+                loadDataAccount();
+            }
+            else
+            {
+                MessageBox.Show("Điền đủ thông tin để sửa", "Thông báo", MessageBoxButtons.OK);
+            }
         }
         private void btnListUser_Click(object sender, EventArgs e)
         {
@@ -148,7 +184,33 @@ namespace QuanLiCuaHangWinForms
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            searchUser(txbUserName.Text);
+            if (txbUserName.Text != "")
+            {
+                searchUser(txbUserName.Text);
+            }
+            else
+            {
+                MessageBox.Show("Nhập tên khách hàng cần tìm", "Thông báo", MessageBoxButtons.OK);
+            }
+        }
+        private void btnEditImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                string[] fileName = openFile.FileName.Split('\\');
+                AccountDAL.Singleton.changeAvatar(Application.StartupPath + '\\' + fileName[fileName.Length - 1],Convert.ToInt32(txbUserID.Text));
+                MessageBox.Show("Cập nhật ảnh thành công", "Thông báo", MessageBoxButtons.OK);
+                loadImage(txbUserName.Text, txbPass.Text);
+                loadDataAccount();
+            }
+        }
+        private void btnDeleteImage_Click(object sender, EventArgs e)
+        {
+            AccountDAL.Singleton.changeAvatar("", Convert.ToInt32(txbUserID.Text));
+            MessageBox.Show("Xóa ảnh thành công", "Thông báo", MessageBoxButtons.OK);
+            loadImage(txbUserName.Text, txbPass.Text);
+            loadDataAccount();
         }
         #endregion
     }

@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formUsers));
             this.gpnlAction = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.rbBListUser = new DevComponents.DotNetBar.RibbonBar();
+            this.btnListUser = new DevComponents.DotNetBar.ButtonItem();
             this.rbBSearch = new DevComponents.DotNetBar.RibbonBar();
             this.btnSearch = new DevComponents.DotNetBar.ButtonItem();
             this.rbBExit = new DevComponents.DotNetBar.RibbonBar();
@@ -43,6 +45,9 @@
             this.labelItem3 = new DevComponents.DotNetBar.LabelItem();
             this.btnEdit = new DevComponents.DotNetBar.ButtonItem();
             this.gpnlAccount = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnDeleteImage = new DevComponents.DotNetBar.ButtonX();
+            this.btnEditImage = new DevComponents.DotNetBar.ButtonX();
+            this.pcImage = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ckbAdress = new System.Windows.Forms.CheckBox();
             this.ckbNumber = new System.Windows.Forms.CheckBox();
@@ -75,10 +80,9 @@
             this.lbUserName = new System.Windows.Forms.Label();
             this.lbUserID = new System.Windows.Forms.Label();
             this.dgvAccount = new System.Windows.Forms.DataGridView();
-            this.rbBListUser = new DevComponents.DotNetBar.RibbonBar();
-            this.btnListUser = new DevComponents.DotNetBar.ButtonItem();
             this.gpnlAction.SuspendLayout();
             this.gpnlAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,7 +96,7 @@
             this.gpnlAction.Controls.Add(this.rbBSearch);
             this.gpnlAction.Controls.Add(this.rbBExit);
             this.gpnlAction.Controls.Add(this.rbBUpdate);
-            this.gpnlAction.Location = new System.Drawing.Point(12, 316);
+            this.gpnlAction.Location = new System.Drawing.Point(12, 342);
             this.gpnlAction.Name = "gpnlAction";
             this.gpnlAction.Size = new System.Drawing.Size(906, 105);
             // 
@@ -117,6 +121,28 @@
             this.gpnlAction.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
             this.gpnlAction.TabIndex = 3;
             this.gpnlAction.Text = "Tác vụ";
+            // 
+            // rbBListUser
+            // 
+            this.rbBListUser.AutoOverflowEnabled = true;
+            this.rbBListUser.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnListUser});
+            this.rbBListUser.Location = new System.Drawing.Point(333, 4);
+            this.rbBListUser.Name = "rbBListUser";
+            this.rbBListUser.Size = new System.Drawing.Size(100, 77);
+            this.rbBListUser.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.rbBListUser.TabIndex = 4;
+            this.rbBListUser.Text = "Danh sách khách hàng";
+            // 
+            // btnListUser
+            // 
+            this.btnListUser.Image = ((System.Drawing.Image)(resources.GetObject("btnListUser.Image")));
+            this.btnListUser.ImageFixedSize = new System.Drawing.Size(50, 50);
+            this.btnListUser.ImagePaddingHorizontal = 40;
+            this.btnListUser.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnListUser.Name = "btnListUser";
+            this.btnListUser.SubItemsExpandWidth = 14;
+            this.btnListUser.Click += new System.EventHandler(this.btnListUser_Click);
             // 
             // rbBSearch
             // 
@@ -246,6 +272,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gpnlAccount.CanvasColor = System.Drawing.SystemColors.Control;
             this.gpnlAccount.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.gpnlAccount.Controls.Add(this.btnDeleteImage);
+            this.gpnlAccount.Controls.Add(this.btnEditImage);
+            this.gpnlAccount.Controls.Add(this.pcImage);
             this.gpnlAccount.Controls.Add(this.label1);
             this.gpnlAccount.Controls.Add(this.ckbAdress);
             this.gpnlAccount.Controls.Add(this.ckbNumber);
@@ -280,7 +309,7 @@
             this.gpnlAccount.Controls.Add(this.dgvAccount);
             this.gpnlAccount.Location = new System.Drawing.Point(12, 7);
             this.gpnlAccount.Name = "gpnlAccount";
-            this.gpnlAccount.Size = new System.Drawing.Size(906, 303);
+            this.gpnlAccount.Size = new System.Drawing.Size(906, 329);
             // 
             // 
             // 
@@ -304,12 +333,45 @@
             this.gpnlAccount.TabIndex = 2;
             this.gpnlAccount.Text = "Thông tin tài khoản";
             // 
+            // btnDeleteImage
+            // 
+            this.btnDeleteImage.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDeleteImage.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnDeleteImage.Location = new System.Drawing.Point(298, 318);
+            this.btnDeleteImage.Name = "btnDeleteImage";
+            this.btnDeleteImage.Size = new System.Drawing.Size(59, 23);
+            this.btnDeleteImage.TabIndex = 14;
+            this.btnDeleteImage.Text = "Xóa";
+            this.btnDeleteImage.Click += new System.EventHandler(this.btnDeleteImage_Click);
+            // 
+            // btnEditImage
+            // 
+            this.btnEditImage.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnEditImage.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnEditImage.Location = new System.Drawing.Point(298, 289);
+            this.btnEditImage.Name = "btnEditImage";
+            this.btnEditImage.Size = new System.Drawing.Size(59, 23);
+            this.btnEditImage.TabIndex = 13;
+            this.btnEditImage.Text = "Cập nhật";
+            this.btnEditImage.Click += new System.EventHandler(this.btnEditImage_Click);
+            // 
+            // pcImage
+            // 
+            this.pcImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pcImage.Location = new System.Drawing.Point(15, 289);
+            this.pcImage.Name = "pcImage";
+            this.pcImage.Size = new System.Drawing.Size(268, 32);
+            this.pcImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcImage.TabIndex = 12;
+            this.pcImage.TabStop = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(311, -1);
+            this.label1.Location = new System.Drawing.Point(311, -2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 15);
             this.label1.TabIndex = 11;
@@ -320,7 +382,7 @@
             this.ckbAdress.AutoSize = true;
             this.ckbAdress.Checked = true;
             this.ckbAdress.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbAdress.Location = new System.Drawing.Point(320, 264);
+            this.ckbAdress.Location = new System.Drawing.Point(320, 263);
             this.ckbAdress.Name = "ckbAdress";
             this.ckbAdress.Size = new System.Drawing.Size(15, 14);
             this.ckbAdress.TabIndex = 6;
@@ -332,7 +394,7 @@
             this.ckbNumber.AutoSize = true;
             this.ckbNumber.Checked = true;
             this.ckbNumber.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbNumber.Location = new System.Drawing.Point(320, 208);
+            this.ckbNumber.Location = new System.Drawing.Point(320, 207);
             this.ckbNumber.Name = "ckbNumber";
             this.ckbNumber.Size = new System.Drawing.Size(15, 14);
             this.ckbNumber.TabIndex = 6;
@@ -344,7 +406,7 @@
             this.ckbSex.AutoSize = true;
             this.ckbSex.Checked = true;
             this.ckbSex.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbSex.Location = new System.Drawing.Point(320, 153);
+            this.ckbSex.Location = new System.Drawing.Point(320, 152);
             this.ckbSex.Name = "ckbSex";
             this.ckbSex.Size = new System.Drawing.Size(15, 14);
             this.ckbSex.TabIndex = 6;
@@ -356,7 +418,7 @@
             this.ckbEmail.AutoSize = true;
             this.ckbEmail.Checked = true;
             this.ckbEmail.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbEmail.Location = new System.Drawing.Point(320, 237);
+            this.ckbEmail.Location = new System.Drawing.Point(320, 236);
             this.ckbEmail.Name = "ckbEmail";
             this.ckbEmail.Size = new System.Drawing.Size(15, 14);
             this.ckbEmail.TabIndex = 6;
@@ -368,7 +430,7 @@
             this.ckbAge.AutoSize = true;
             this.ckbAge.Checked = true;
             this.ckbAge.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbAge.Location = new System.Drawing.Point(320, 181);
+            this.ckbAge.Location = new System.Drawing.Point(320, 180);
             this.ckbAge.Name = "ckbAge";
             this.ckbAge.Size = new System.Drawing.Size(15, 14);
             this.ckbAge.TabIndex = 6;
@@ -380,7 +442,7 @@
             this.ckbName.AutoSize = true;
             this.ckbName.Checked = true;
             this.ckbName.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbName.Location = new System.Drawing.Point(320, 126);
+            this.ckbName.Location = new System.Drawing.Point(320, 125);
             this.ckbName.Name = "ckbName";
             this.ckbName.Size = new System.Drawing.Size(15, 14);
             this.ckbName.TabIndex = 6;
@@ -392,7 +454,7 @@
             this.ckbType.AutoSize = true;
             this.ckbType.Checked = true;
             this.ckbType.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbType.Location = new System.Drawing.Point(320, 99);
+            this.ckbType.Location = new System.Drawing.Point(320, 98);
             this.ckbType.Name = "ckbType";
             this.ckbType.Size = new System.Drawing.Size(15, 14);
             this.ckbType.TabIndex = 6;
@@ -404,7 +466,7 @@
             this.ckbPass.AutoSize = true;
             this.ckbPass.Checked = true;
             this.ckbPass.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbPass.Location = new System.Drawing.Point(320, 71);
+            this.ckbPass.Location = new System.Drawing.Point(320, 70);
             this.ckbPass.Name = "ckbPass";
             this.ckbPass.Size = new System.Drawing.Size(15, 14);
             this.ckbPass.TabIndex = 6;
@@ -416,7 +478,7 @@
             this.ckbUserName.AutoSize = true;
             this.ckbUserName.Checked = true;
             this.ckbUserName.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbUserName.Location = new System.Drawing.Point(320, 44);
+            this.ckbUserName.Location = new System.Drawing.Point(320, 43);
             this.ckbUserName.Name = "ckbUserName";
             this.ckbUserName.Size = new System.Drawing.Size(15, 14);
             this.ckbUserName.TabIndex = 6;
@@ -428,7 +490,7 @@
             this.ckbID.AutoSize = true;
             this.ckbID.Checked = true;
             this.ckbID.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbID.Location = new System.Drawing.Point(320, 17);
+            this.ckbID.Location = new System.Drawing.Point(320, 16);
             this.ckbID.Name = "ckbID";
             this.ckbID.Size = new System.Drawing.Size(15, 14);
             this.ckbID.TabIndex = 6;
@@ -442,7 +504,7 @@
             // 
             this.txbAdress.Border.Class = "TextBoxBorder";
             this.txbAdress.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbAdress.Location = new System.Drawing.Point(109, 261);
+            this.txbAdress.Location = new System.Drawing.Point(109, 260);
             this.txbAdress.Name = "txbAdress";
             this.txbAdress.Size = new System.Drawing.Size(205, 22);
             this.txbAdress.TabIndex = 10;
@@ -454,7 +516,7 @@
             // 
             this.txbNumber.Border.Class = "TextBoxBorder";
             this.txbNumber.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbNumber.Location = new System.Drawing.Point(109, 205);
+            this.txbNumber.Location = new System.Drawing.Point(109, 204);
             this.txbNumber.Name = "txbNumber";
             this.txbNumber.Size = new System.Drawing.Size(205, 22);
             this.txbNumber.TabIndex = 8;
@@ -466,7 +528,7 @@
             // 
             this.txbSex.Border.Class = "TextBoxBorder";
             this.txbSex.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbSex.Location = new System.Drawing.Point(109, 150);
+            this.txbSex.Location = new System.Drawing.Point(109, 149);
             this.txbSex.Name = "txbSex";
             this.txbSex.Size = new System.Drawing.Size(205, 22);
             this.txbSex.TabIndex = 6;
@@ -478,7 +540,7 @@
             // 
             this.txbEmail.Border.Class = "TextBoxBorder";
             this.txbEmail.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbEmail.Location = new System.Drawing.Point(109, 233);
+            this.txbEmail.Location = new System.Drawing.Point(109, 232);
             this.txbEmail.Name = "txbEmail";
             this.txbEmail.Size = new System.Drawing.Size(205, 22);
             this.txbEmail.TabIndex = 9;
@@ -490,7 +552,7 @@
             // 
             this.txbAge.Border.Class = "TextBoxBorder";
             this.txbAge.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbAge.Location = new System.Drawing.Point(109, 177);
+            this.txbAge.Location = new System.Drawing.Point(109, 176);
             this.txbAge.Name = "txbAge";
             this.txbAge.Size = new System.Drawing.Size(205, 22);
             this.txbAge.TabIndex = 7;
@@ -502,7 +564,7 @@
             // 
             this.txbName.Border.Class = "TextBoxBorder";
             this.txbName.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbName.Location = new System.Drawing.Point(109, 122);
+            this.txbName.Location = new System.Drawing.Point(109, 121);
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(205, 22);
             this.txbName.TabIndex = 5;
@@ -514,7 +576,7 @@
             // 
             this.txbType.Border.Class = "TextBoxBorder";
             this.txbType.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbType.Location = new System.Drawing.Point(109, 95);
+            this.txbType.Location = new System.Drawing.Point(109, 94);
             this.txbType.Name = "txbType";
             this.txbType.Size = new System.Drawing.Size(205, 22);
             this.txbType.TabIndex = 4;
@@ -526,7 +588,7 @@
             // 
             this.txbPass.Border.Class = "TextBoxBorder";
             this.txbPass.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbPass.Location = new System.Drawing.Point(109, 67);
+            this.txbPass.Location = new System.Drawing.Point(109, 66);
             this.txbPass.Name = "txbPass";
             this.txbPass.Size = new System.Drawing.Size(205, 22);
             this.txbPass.TabIndex = 3;
@@ -538,7 +600,7 @@
             // 
             this.txbUserName.Border.Class = "TextBoxBorder";
             this.txbUserName.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbUserName.Location = new System.Drawing.Point(109, 40);
+            this.txbUserName.Location = new System.Drawing.Point(109, 39);
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.Size = new System.Drawing.Size(205, 22);
             this.txbUserName.TabIndex = 2;
@@ -548,7 +610,7 @@
             this.lbAdress.AutoSize = true;
             this.lbAdress.BackColor = System.Drawing.Color.Transparent;
             this.lbAdress.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAdress.Location = new System.Drawing.Point(12, 264);
+            this.lbAdress.Location = new System.Drawing.Point(12, 263);
             this.lbAdress.Name = "lbAdress";
             this.lbAdress.Size = new System.Drawing.Size(46, 15);
             this.lbAdress.TabIndex = 4;
@@ -559,7 +621,7 @@
             this.lbNumber.AutoSize = true;
             this.lbNumber.BackColor = System.Drawing.Color.Transparent;
             this.lbNumber.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNumber.Location = new System.Drawing.Point(12, 208);
+            this.lbNumber.Location = new System.Drawing.Point(12, 207);
             this.lbNumber.Name = "lbNumber";
             this.lbNumber.Size = new System.Drawing.Size(77, 15);
             this.lbNumber.TabIndex = 4;
@@ -570,7 +632,7 @@
             this.lbSex.AutoSize = true;
             this.lbSex.BackColor = System.Drawing.Color.Transparent;
             this.lbSex.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSex.Location = new System.Drawing.Point(12, 153);
+            this.lbSex.Location = new System.Drawing.Point(12, 152);
             this.lbSex.Name = "lbSex";
             this.lbSex.Size = new System.Drawing.Size(56, 15);
             this.lbSex.TabIndex = 4;
@@ -583,7 +645,7 @@
             // 
             this.txbUserID.Border.Class = "TextBoxBorder";
             this.txbUserID.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbUserID.Location = new System.Drawing.Point(109, 13);
+            this.txbUserID.Location = new System.Drawing.Point(109, 12);
             this.txbUserID.Name = "txbUserID";
             this.txbUserID.Size = new System.Drawing.Size(205, 22);
             this.txbUserID.TabIndex = 1;
@@ -593,7 +655,7 @@
             this.lbEmail.AutoSize = true;
             this.lbEmail.BackColor = System.Drawing.Color.Transparent;
             this.lbEmail.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEmail.Location = new System.Drawing.Point(12, 236);
+            this.lbEmail.Location = new System.Drawing.Point(12, 235);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(38, 15);
             this.lbEmail.TabIndex = 4;
@@ -604,7 +666,7 @@
             this.lbAge.AutoSize = true;
             this.lbAge.BackColor = System.Drawing.Color.Transparent;
             this.lbAge.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAge.Location = new System.Drawing.Point(12, 180);
+            this.lbAge.Location = new System.Drawing.Point(12, 179);
             this.lbAge.Name = "lbAge";
             this.lbAge.Size = new System.Drawing.Size(31, 15);
             this.lbAge.TabIndex = 4;
@@ -615,7 +677,7 @@
             this.lbName.AutoSize = true;
             this.lbName.BackColor = System.Drawing.Color.Transparent;
             this.lbName.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbName.Location = new System.Drawing.Point(12, 125);
+            this.lbName.Location = new System.Drawing.Point(12, 124);
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(28, 15);
             this.lbName.TabIndex = 4;
@@ -626,7 +688,7 @@
             this.lbType.AutoSize = true;
             this.lbType.BackColor = System.Drawing.Color.Transparent;
             this.lbType.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbType.Location = new System.Drawing.Point(12, 98);
+            this.lbType.Location = new System.Drawing.Point(12, 97);
             this.lbType.Name = "lbType";
             this.lbType.Size = new System.Drawing.Size(31, 15);
             this.lbType.TabIndex = 4;
@@ -637,7 +699,7 @@
             this.lbPass.AutoSize = true;
             this.lbPass.BackColor = System.Drawing.Color.Transparent;
             this.lbPass.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPass.Location = new System.Drawing.Point(12, 70);
+            this.lbPass.Location = new System.Drawing.Point(12, 69);
             this.lbPass.Name = "lbPass";
             this.lbPass.Size = new System.Drawing.Size(59, 15);
             this.lbPass.TabIndex = 4;
@@ -648,7 +710,7 @@
             this.lbUserName.AutoSize = true;
             this.lbUserName.BackColor = System.Drawing.Color.Transparent;
             this.lbUserName.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUserName.Location = new System.Drawing.Point(12, 43);
+            this.lbUserName.Location = new System.Drawing.Point(12, 42);
             this.lbUserName.Name = "lbUserName";
             this.lbUserName.Size = new System.Drawing.Size(86, 15);
             this.lbUserName.TabIndex = 4;
@@ -659,7 +721,7 @@
             this.lbUserID.AutoSize = true;
             this.lbUserID.BackColor = System.Drawing.Color.Transparent;
             this.lbUserID.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUserID.Location = new System.Drawing.Point(12, 16);
+            this.lbUserID.Location = new System.Drawing.Point(12, 15);
             this.lbUserID.Name = "lbUserID";
             this.lbUserID.Size = new System.Drawing.Size(91, 15);
             this.lbUserID.TabIndex = 4;
@@ -673,39 +735,17 @@
             this.dgvAccount.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAccount.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAccount.Location = new System.Drawing.Point(372, 3);
+            this.dgvAccount.Location = new System.Drawing.Point(373, 3);
             this.dgvAccount.Name = "dgvAccount";
-            this.dgvAccount.Size = new System.Drawing.Size(525, 275);
+            this.dgvAccount.Size = new System.Drawing.Size(524, 301);
             this.dgvAccount.TabIndex = 0;
             this.dgvAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAccount_CellClick);
-            // 
-            // rbBListUser
-            // 
-            this.rbBListUser.AutoOverflowEnabled = true;
-            this.rbBListUser.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnListUser});
-            this.rbBListUser.Location = new System.Drawing.Point(333, 4);
-            this.rbBListUser.Name = "rbBListUser";
-            this.rbBListUser.Size = new System.Drawing.Size(100, 77);
-            this.rbBListUser.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.rbBListUser.TabIndex = 4;
-            this.rbBListUser.Text = "Danh sách khách hàng";
-            // 
-            // btnListUser
-            // 
-            this.btnListUser.Image = ((System.Drawing.Image)(resources.GetObject("btnListUser.Image")));
-            this.btnListUser.ImageFixedSize = new System.Drawing.Size(50, 50);
-            this.btnListUser.ImagePaddingHorizontal = 40;
-            this.btnListUser.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnListUser.Name = "btnListUser";
-            this.btnListUser.SubItemsExpandWidth = 14;
-            this.btnListUser.Click += new System.EventHandler(this.btnListUser_Click);
             // 
             // formUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(930, 428);
+            this.ClientSize = new System.Drawing.Size(930, 454);
             this.Controls.Add(this.gpnlAction);
             this.Controls.Add(this.gpnlAccount);
             this.Name = "formUsers";
@@ -714,6 +754,7 @@
             this.gpnlAction.ResumeLayout(false);
             this.gpnlAccount.ResumeLayout(false);
             this.gpnlAccount.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccount)).EndInit();
             this.ResumeLayout(false);
 
@@ -769,5 +810,8 @@
         private System.Windows.Forms.Label label1;
         private DevComponents.DotNetBar.RibbonBar rbBListUser;
         private DevComponents.DotNetBar.ButtonItem btnListUser;
+        private System.Windows.Forms.PictureBox pcImage;
+        private DevComponents.DotNetBar.ButtonX btnEditImage;
+        private DevComponents.DotNetBar.ButtonX btnDeleteImage;
     }
 }

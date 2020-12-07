@@ -88,6 +88,12 @@
     <Compile Include="formFoods.Designer.cs">
       <DependentUpon>formFoods.cs</DependentUpon>
     </Compile>
+    <Compile Include="formImageFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formImageFood.Designer.cs">
+      <DependentUpon>formImageFood.cs</DependentUpon>
+    </Compile>
     <Compile Include="formLoginFacebook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formFoods.resx">
       <DependentUpon>formFoods.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formImageFood.resx">
+      <DependentUpon>formImageFood.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formLoginFacebook.resx">
       <DependentUpon>formLoginFacebook.cs</DependentUpon>

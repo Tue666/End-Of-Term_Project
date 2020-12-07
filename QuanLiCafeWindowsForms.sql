@@ -15,7 +15,8 @@ CREATE TABLE Account
 	Age INT,
 	Number NVARCHAR(20),
 	Email NVARCHAR(30),
-	Adress NVARCHAR(30)
+	Adress NVARCHAR(30),
+	urlImage TEXT
 )
 GO
 
@@ -33,7 +34,8 @@ CREATE TABLE Food
 	FoodName NVARCHAR(100) NOT NULL,
 	FoodCategory INT NOT NULL,
 	Price FLOAT NOT NULL DEFAULT 0,
-	Discount FLOAT DEFAULT 0
+	Discount FLOAT DEFAULT 0,
+	urlImage TEXT
 
 	FOREIGN KEY (FoodCategory) REFERENCES dbo.FoodCategory(ID)
 )
@@ -71,6 +73,7 @@ CREATE TABLE BillInFo
 	FOREIGN KEY (idFood) REFERENCES dbo.Food(ID)
 )
 GO
+--sp_help 'BillInfo'
 -----------------------------------------------------------------------------
 SELECT * FROM dbo.TableFood
 GO
@@ -87,7 +90,8 @@ DBCC CHECKIDENT (BillInFo,RESEED, 0)
 GO
 DBCC CHECKIDENT (Bill,RESEED, 0)
 GO
-DELETE BillInFo
+SELECT MAX(ID) FROM Bill
+DELETE TableFood WHERE ID > 8
 GO
 DELETE Bill
 GO
@@ -102,7 +106,7 @@ GO
 DECLARE @i INT = 1
 WHILE @i <= 8
 BEGIN
-	INSERT INTO TableFood(TableName, Status) VALUES (N'Bàn ' + CAST(@i AS NVARCHAR(100)), N'Trống')
+	INSERT TableFood VALUES (N'Bàn ' + CAST(@i AS NVARCHAR(100)), N'Trống')
 	SET @i = @i+1
 END
 GO
@@ -130,8 +134,28 @@ INSERT INTO Food(FoodName,FoodCategory,Price) VALUES
 (N'Ổi',5,15000),
 (N'Nho không hột',5,30000)
 GO
+--Thêm bill--
+INSERT INTO Bill VALUES
+(4,0),
+(2,0),
+(5,0),
+(1,0),
+(3,0),
+(6,0)
+GO
+--Thêm billinfo--
+INSERT BillInFo VALUES
+(1,3,1),
+(1,9,3),
+(2,5,4),
+(2,11,4),
+(3,1,1),
+(3,9,5),
+(3,13,5)
+GO
+SELECT ID FROM BillInFo WHERE idBill = 2 AND idFood = 5
 
-CREATE PROC USP_InsertBillInfo
+ALTER PROC USP_InsertBillInfo
 @idBill INT, @idFood INT, @QuantityFood INT
 AS
 BEGIN
@@ -154,15 +178,14 @@ BEGIN
 END
 GO
 
-CREATE PROC USP_InserBill
+ALTER PROC USP_InserBill
 @idTable INT
 AS
 BEGIN
 	INSERT INTO dbo.Bill (idTable, Status, DayCheckIn, DayCheckOut) VALUES (@idTable,0,GETDATE(),NULL)
 END
 GO
-
-CREATE PROC USP_CheckOut
+ALTER PROC USP_CheckOut
 @idBill INT, @totalPrice FLOAT, @allDiscount FLOAT
 AS
 BEGIN
@@ -172,7 +195,6 @@ BEGIN
 	UPDATE Bill SET Status = 1 WHERE ID = @idBill AND Status = 0
 END
 GO
-
 CREATE PROC USP_TableList
 @idBill INT
 AS
@@ -190,11 +212,19 @@ BEGIN
 END
 GO
 
+SELECT Status FROM TableFood WHERE ID = 2
+GO
+
 SELECT f.FoodName, bi.QuantityFood, f.Price*bi.QuantityFood AS TotalPrice FROM BillInFo as bi, Bill as b, Food as f 
 WHERE bi.idBill = b.ID AND bi.idFood = f.ID AND b.idTable = 2 AND b.Status = 0
 GO
+SELECT MAX(ID) FROM Bill
+GO
+SELECT * FROM Food WHERE FoodCategory = 3
+GO
 
-CREATE PROC USP_SwapTable
+
+ALTER PROC USP_SwapTable
 @idTable1 INT, @idTable2 INT
 AS
 BEGIN
@@ -252,16 +282,31 @@ BEGIN
     RETURN @strInput
 END
 
+SELECT * FROM dbo.Food
+SELECT * FROM dbo.FoodCategory
+
 SELECT f.ID AS [Mã khách hàng],f.FoodName AS [Tên món ăn],fc.CategoryName AS [Tên thức ăn],f.Price AS [Đơn giá]
 FROM dbo.Food AS f, dbo.FoodCategory AS fc
 WHERE f.FoodCategory = fc.ID
 GO
-
+DECLARE @foodName NVARCHAR(100) = N'Nước dừa'
+DECLARE @foodCate INT = 4
+DECLARE @Price FLOAT = 30000
+INSERT dbo.Food VALUES (N'',(SELECT ID FROM dbo.FoodCategory WHERE CategoryName = N'Đồ uống các loại'), 15000)
+GO
+UPDATE dbo.Account SET UserName = N'user', PassWord = N'123', AccountType = 0, Name = N'Tuệ', Sex = N'Nam',Age = 19,Number = N'12313',Email = N'acc',Adress = N'âccca' WHERE ID = 23
+GO
 DECLARE @foodName NVARCHAR(100) = N'Dưa'
 SELECT * FROM dbo.Account WHERE dbo.ChuyenTiengVietCoDauThanhKhongDau(UserName) LIKE N'%'+dbo.ChuyenTiengVietCoDauThanhKhongDau(@foodName)+'%'
 GO
 
-CREATE PROC USP_ShowBill
+SELECT ID AS [Mã khách hàng], UserName AS [Tên đăng nhập], PassWord AS [Mật khẩu], AccountType AS [Loại tài khoản], Name AS [Tên khách hàng], Sex AS [Giới tính], Age AS [Tuổi], Number AS [Số điện thoại], Email, Adress AS [Địa chỉ] FROM dbo.Account
+
+ALTER TABLE dbo.Food
+ADD Discount FLOAT
+GO
+
+ALTER PROC USP_ShowBill
 @idTable INT
 AS
 BEGIN
@@ -269,6 +314,16 @@ BEGIN
 END
 GO
 
+EXEC USP_ShowBill 1
+
+ALTER TABLE dbo.Bill
+ADD allDiscount FLOAT
+
 --tf.TableName AS [Bàn], b.DayCheckIn AS [Ngày vào], b.DayCheckOut AS [Ngày ra], b.Status AS [Tình trạng]
 SELECT tf.TableName AS [Bàn], b.totalPrice AS [Tổng tiền], b.DayCheckIn AS [Ngày vào], b.DayCheckOut AS [Ngày ra], b.Status AS [Tình trạng] FROM dbo.Bill AS b, dbo.TableFood AS tf WHERE b.idTable = tf.ID AND b.DayCheckIn >= '20201001' AND b.DayCheckOut <= '20201031' AND b.Status = 1
 GO
+
+UPDATE dbo.Account SET urlImage = 'aaaa' WHERE ID = 1
+GO
+
+SELECT * FROM Food WHERE ID = 1
