@@ -187,6 +187,7 @@
             this.btnExit.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.btnExit.Name = "btnExit";
             this.btnExit.SubItemsExpandWidth = 14;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // rbBUpdate
             // 

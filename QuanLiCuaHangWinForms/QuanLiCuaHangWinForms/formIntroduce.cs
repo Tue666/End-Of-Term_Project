@@ -21,6 +21,11 @@ namespace QuanLiCuaHangWinForms
         #endregion
 
         #region Events
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            pcPR.Visible = false;
+            btnClose.Visible = false;
+        }
         #endregion
     }
 }

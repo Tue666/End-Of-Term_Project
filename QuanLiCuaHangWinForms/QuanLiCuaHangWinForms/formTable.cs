@@ -68,9 +68,17 @@ namespace QuanLiCuaHangWinForms
                 buttonList[i].Text = item.Name + Environment.NewLine + item.Status;
                 buttonList[i].Location = new Point(x, y);
                 if (item.Status == "Trống")
+                {
                     buttonList[i].BackColor = Color.Aqua;
+                }
+                else if (item.Status == "Bảo trì")
+                {
+                    buttonList[i].BackColor = Color.Red;
+                }
                 else
+                {
                     buttonList[i].BackColor = Color.Pink;
+                } 
                 dgvTable.Controls.Add(buttonList[i]);
                 buttonList[i].Click += Btn_Click;
                 buttonList[i].Tag = item;
@@ -126,10 +134,18 @@ namespace QuanLiCuaHangWinForms
         }
         private void Btn_Click(object sender, EventArgs e)
         {
-            int tableID = ((sender as Button).Tag as Table).Id;
-            txbFocusTable.Text = tableID.ToString();
-            lsvBillInfo.Tag = (sender as Button).Tag;
-            showBill(tableID);
+            Table table = (sender as Button).Tag as Table;
+            if (table.Status == "Bảo trì")
+            {
+                MessageBox.Show("Bàn đang bảo trì. Chọn bàn khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                int tableID = table.Id;
+                txbFocusTable.Text = tableID.ToString();
+                lsvBillInfo.Tag = (sender as Button).Tag;
+                showBill(tableID);
+            }
         }
         private void thôngTinToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -238,30 +254,37 @@ namespace QuanLiCuaHangWinForms
             }
             else
             {
-                int idTable1 = int.Parse(txbFocusTable.Text);
-                int idTable2 = (cbTableList.SelectedItem as Table).Id;
-                if (buttonList[idTable1].Text == "Bàn " + idTable1 + "\r\nCó người")
+                if ((cbTableList.SelectedItem as Table).Status == "Bảo trì")
                 {
-                    if (buttonList[idTable2].Text == "Bàn " + idTable2 + "\r\nCó người")
-                    {
-                        MessageBox.Show("Bàn này đã có người, vui lòng chọn bàn khác. Xin cảm ơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
-                    {
-                        TableDAL.Singleton.swapTable(idTable1, idTable2);
-                        buttonList[idTable1].BackColor = Color.Aqua;
-                        buttonList[idTable1].Text = "Bàn " + idTable1 + Environment.NewLine + "Trống";
-                        buttonList[idTable2].BackColor = Color.Pink;
-                        buttonList[idTable2].Text = "Bàn " + idTable2 + Environment.NewLine + "Có người";
-                        showBill(idTable1);
-                        MessageBox.Show("Chuyển bàn thành công", "Thông báo", MessageBoxButtons.OK);
-                    }
+                    MessageBox.Show("Bàn đang bảo trì. Chọn bàn khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    if (buttonList[idTable2].Text == "Bàn " + idTable2 + "\r\nCó người")
+                    int idTable1 = int.Parse(txbFocusTable.Text);
+                    int idTable2 = (cbTableList.SelectedItem as Table).Id;
+                    if (buttonList[idTable1].Text == "Bàn " + idTable1 + "\r\nCó người")
                     {
-                        MessageBox.Show("Bàn này đã có người, vui lòng chọn bàn khác. Xin cảm ơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        if (buttonList[idTable2].Text == "Bàn " + idTable2 + "\r\nCó người")
+                        {
+                            MessageBox.Show("Bàn này đã có người, vui lòng chọn bàn khác. Xin cảm ơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            TableDAL.Singleton.swapTable(idTable1, idTable2);
+                            buttonList[idTable1].BackColor = Color.Aqua;
+                            buttonList[idTable1].Text = "Bàn " + idTable1 + Environment.NewLine + "Trống";
+                            buttonList[idTable2].BackColor = Color.Pink;
+                            buttonList[idTable2].Text = "Bàn " + idTable2 + Environment.NewLine + "Có người";
+                            showBill(idTable1);
+                            MessageBox.Show("Chuyển bàn thành công", "Thông báo", MessageBoxButtons.OK);
+                        }
+                    }
+                    else
+                    {
+                        if (buttonList[idTable2].Text == "Bàn " + idTable2 + "\r\nCó người")
+                        {
+                            MessageBox.Show("Bàn này đã có người, vui lòng chọn bàn khác. Xin cảm ơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                 }
             }

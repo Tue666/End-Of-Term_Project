@@ -23,6 +23,16 @@ namespace QuanLiCuaHangWinForms.DAL
         
         private AccountDAL() { }
 
+        public bool checkExistName(string userName)
+        {
+            string query = "SELECT UserName FROM Account WHERE UserName = N'" + userName + "'";
+            return Database.Singleton.ExucuteQuery(query).Rows.Count == 1;
+        }
+        public bool checkExitUser(int userID)
+        {
+            string query = "SELECT ID FROM Account WHERE ID = " + userID;
+            return Convert.ToInt32(Database.Singleton.ExucuteScalar(query)) > 0;
+        }
         public bool changeAvatar(string filePath, int userID)
         {
             string query = "UPDATE dbo.Account SET urlImage = '" + filePath + "' WHERE ID = " + userID;

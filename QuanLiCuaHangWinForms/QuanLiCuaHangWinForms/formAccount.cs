@@ -85,7 +85,7 @@ namespace QuanLiCuaHangWinForms
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            (System.Windows.Forms.Application.OpenForms["formMainMenu"] as formMainMenu).deleteTab("Thông tin");
         }
         private void btnUpdateInfor_Click(object sender, EventArgs e)
         {

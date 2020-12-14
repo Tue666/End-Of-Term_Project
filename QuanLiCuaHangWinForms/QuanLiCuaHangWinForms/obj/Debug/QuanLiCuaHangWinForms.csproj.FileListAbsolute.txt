@@ -38,3 +38,5 @@ D:\ti\Winform\End-Of-Term_Project\QuanLiCuaHangWinForms\QuanLiCuaHangWinForms\ob
 D:\ti\Winform\End-Of-Term_Project\QuanLiCuaHangWinForms\QuanLiCuaHangWinForms\obj\Debug\QuanLiCuaHangWinForms.formDiscount.resources
 D:\ti\Winform\End-Of-Term_Project\QuanLiCuaHangWinForms\QuanLiCuaHangWinForms\obj\Debug\QuanLiCuaHangWinForms.formLoginFacebook.resources
 D:\ti\Winform\End-Of-Term_Project\QuanLiCuaHangWinForms\QuanLiCuaHangWinForms\obj\Debug\QuanLiCuaHangWinForms.formImageFood.resources
+D:\ti\Winform\End-Of-Term_Project\QuanLiCuaHangWinForms\QuanLiCuaHangWinForms\obj\Debug\QuanLiCuaHangWinForms.formManageTable.resources
+D:\ti\Winform\End-Of-Term_Project\QuanLiCuaHangWinForms\QuanLiCuaHangWinForms\obj\Debug\QuanLiCuaHangWinForms.formWallet.resources

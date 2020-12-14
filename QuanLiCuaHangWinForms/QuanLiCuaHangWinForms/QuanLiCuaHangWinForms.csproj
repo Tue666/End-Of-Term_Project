@@ -100,6 +100,12 @@
     <Compile Include="formLoginFacebook.Designer.cs">
       <DependentUpon>formLoginFacebook.cs</DependentUpon>
     </Compile>
+    <Compile Include="formManageTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formManageTable.Designer.cs">
+      <DependentUpon>formManageTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="formRevenue.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,12 @@
     <Compile Include="formTable.Designer.cs">
       <DependentUpon>formTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="formWallet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formWallet.Designer.cs">
+      <DependentUpon>formWallet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="formAccount.resx">
@@ -164,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formLoginFacebook.resx">
       <DependentUpon>formLoginFacebook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formManageTable.resx">
+      <DependentUpon>formManageTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formRevenue.resx">
       <DependentUpon>formRevenue.cs</DependentUpon>
@@ -188,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formTable.resx">
       <DependentUpon>formTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formWallet.resx">
+      <DependentUpon>formWallet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

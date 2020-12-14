@@ -14,6 +14,16 @@ namespace QuanLiCuaHangWinForms.DAL
 
         public static FoodDAL Singleton { get { if (singleton == null) singleton = new FoodDAL(); return singleton; } private set => singleton = value; }
 
+        public bool checkExistName(string foodName)
+        {
+            string query = "SELECT FoodName FROM Food WHERE FoodName = N'" + foodName + "'";
+            return Database.Singleton.ExucuteQuery(query).Rows.Count == 1;
+        }
+        public bool checkExistFood(int foodID)
+        {
+            string query = "SELECT ID FROM Food WHERE ID = " + foodID;
+            return Convert.ToInt32(Database.Singleton.ExucuteScalar(query)) > 0;
+        }
         public bool changeImage(string filePath, int foodID)
         {
             string query = "UPDATE dbo.Food SET urlImage = '" + filePath + "' WHERE ID = " + foodID;

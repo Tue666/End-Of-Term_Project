@@ -22,6 +22,16 @@ namespace QuanLiCuaHangWinForms.DAL
 
         public TableDAL() { }
 
+        public string getStatusTable(int tableID)
+        {
+            string query = "SELECT Status FROM TableFood WHERE ID = " + tableID;
+            return Database.Singleton.ExucuteScalar(query).ToString();
+        }
+        public bool changeMaintenance(int tableID)
+        {
+            string query = "EXEC USP_changeMaintenance " + tableID;
+            return Database.Singleton.ExucuteNonQuery(query) == 1;
+        }
         public List<Table> tableList()
         {
             List<Table> tablelist = new List<Table>();

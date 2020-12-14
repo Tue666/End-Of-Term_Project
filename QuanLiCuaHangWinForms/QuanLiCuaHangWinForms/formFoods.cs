@@ -76,6 +76,10 @@ namespace QuanLiCuaHangWinForms
                 pcImage.Image = new Bitmap(Application.StartupPath + '\\' + fileName[fileName.Length - 1]);
             }
         }
+        private bool checkExistFood(int foodID)
+        {
+            return FoodDAL.Singleton.checkExistFood(foodID);
+        }
         #endregion
 
 
@@ -114,9 +118,16 @@ namespace QuanLiCuaHangWinForms
         {
             if (txbFoodName.Text != "" || txbPrice.Text!=""|| txbDiscount.Text != "")
             {
-                insertFood(txbFoodName.Text, cbFoodCate.SelectedItem.ToString(), float.Parse(txbPrice.Text), float.Parse(txbDiscount.Text));
-                MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
-                loadDataFoods();
+                if (!FoodDAL.Singleton.checkExistName(txbFoodName.Text))
+                {
+                    insertFood(txbFoodName.Text, cbFoodCate.SelectedItem.ToString(), float.Parse(txbPrice.Text), float.Parse(txbDiscount.Text));
+                    MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
+                    loadDataFoods();
+                }
+                else
+                {
+                    MessageBox.Show("Đã có tên này", "Thông báo", MessageBoxButtons.OK);
+                }
             }
             else
             {
@@ -128,9 +139,16 @@ namespace QuanLiCuaHangWinForms
         {
             if (txbFoodID.Text != "")
             {
-                deleteFood(int.Parse(txbFoodID.Text));
-                MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
-                loadDataFoods();
+                if (checkExistFood(Convert.ToInt32(txbFoodID.Text)))
+                {
+                    deleteFood(int.Parse(txbFoodID.Text));
+                    MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                    loadDataFoods();
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy mã thức ăn cần xóa. Xem lại!", "Thông báo", MessageBoxButtons.OK);
+                }
             }
             else
             {
@@ -185,6 +203,10 @@ namespace QuanLiCuaHangWinForms
             MessageBox.Show("Xóa ảnh thành công", "Thông báo", MessageBoxButtons.OK);
             loadImage(Convert.ToInt32(txbFoodID.Text));
             loadDataFoods();
+        }
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            (System.Windows.Forms.Application.OpenForms["formMainMenu"] as formMainMenu).deleteTab("Thức ăn");
         }
         #endregion
     }

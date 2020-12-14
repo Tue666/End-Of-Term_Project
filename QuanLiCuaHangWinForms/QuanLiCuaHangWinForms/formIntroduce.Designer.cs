@@ -39,14 +39,19 @@
             this.buttonX5 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX4 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.pcPR = new System.Windows.Forms.PictureBox();
+            this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.grpIntroduce.SuspendLayout();
             this.groupPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcPR)).BeginInit();
             this.SuspendLayout();
             // 
             // grpIntroduce
             // 
             this.grpIntroduce.CanvasColor = System.Drawing.SystemColors.Control;
             this.grpIntroduce.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.grpIntroduce.Controls.Add(this.btnClose);
+            this.grpIntroduce.Controls.Add(this.pcPR);
             this.grpIntroduce.Controls.Add(this.groupPanel1);
             this.grpIntroduce.Controls.Add(this.buttonX3);
             this.grpIntroduce.Controls.Add(this.buttonX2);
@@ -193,6 +198,32 @@
             this.buttonX1.Size = new System.Drawing.Size(292, 85);
             this.buttonX1.TabIndex = 0;
             // 
+            // pcPR
+            // 
+            this.pcPR.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pcPR.Image = ((System.Drawing.Image)(resources.GetObject("pcPR.Image")));
+            this.pcPR.Location = new System.Drawing.Point(115, 77);
+            this.pcPR.Name = "pcPR";
+            this.pcPR.Size = new System.Drawing.Size(569, 230);
+            this.pcPR.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcPR.TabIndex = 2;
+            this.pcPR.TabStop = false;
+            // 
+            // btnClose
+            // 
+            this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnClose.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnClose.Location = new System.Drawing.Point(648, 80);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(29, 23);
+            this.btnClose.TabIndex = 3;
+            this.btnClose.Text = "X";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // formIntroduce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -204,6 +235,7 @@
             this.grpIntroduce.ResumeLayout(false);
             this.groupPanel1.ResumeLayout(false);
             this.groupPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcPR)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -220,5 +252,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pcPR;
+        private DevComponents.DotNetBar.ButtonX btnClose;
     }
 }

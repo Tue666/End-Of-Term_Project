@@ -57,14 +57,14 @@
             this.rbBListFood = new DevComponents.DotNetBar.RibbonBar();
             this.btnListFood = new DevComponents.DotNetBar.ButtonItem();
             this.gpnlFood = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnDeleteImage = new DevComponents.DotNetBar.ButtonX();
+            this.btnEditImage = new DevComponents.DotNetBar.ButtonX();
+            this.pcImage = new System.Windows.Forms.PictureBox();
             this.cbFoodCate = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ckbDiscount = new System.Windows.Forms.CheckBox();
             this.txbDiscount = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.lbDiscount = new System.Windows.Forms.Label();
-            this.pcImage = new System.Windows.Forms.PictureBox();
-            this.btnEditImage = new DevComponents.DotNetBar.ButtonX();
-            this.btnDeleteImage = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFood)).BeginInit();
             this.gpnlAction.SuspendLayout();
             this.gpnlFood.SuspendLayout();
@@ -297,6 +297,7 @@
             this.btnExit.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.btnExit.Name = "btnExit";
             this.btnExit.SubItemsExpandWidth = 14;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // rbBExit
             // 
@@ -444,6 +445,39 @@
             this.gpnlFood.TabIndex = 4;
             this.gpnlFood.Text = "Thông tin thức ăn";
             // 
+            // btnDeleteImage
+            // 
+            this.btnDeleteImage.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDeleteImage.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnDeleteImage.Location = new System.Drawing.Point(294, 243);
+            this.btnDeleteImage.Name = "btnDeleteImage";
+            this.btnDeleteImage.Size = new System.Drawing.Size(62, 23);
+            this.btnDeleteImage.TabIndex = 10;
+            this.btnDeleteImage.Text = "Xóa";
+            this.btnDeleteImage.Click += new System.EventHandler(this.btnDeleteImage_Click);
+            // 
+            // btnEditImage
+            // 
+            this.btnEditImage.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnEditImage.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnEditImage.Location = new System.Drawing.Point(294, 214);
+            this.btnEditImage.Name = "btnEditImage";
+            this.btnEditImage.Size = new System.Drawing.Size(62, 23);
+            this.btnEditImage.TabIndex = 10;
+            this.btnEditImage.Text = "Cập nhật";
+            this.btnEditImage.Click += new System.EventHandler(this.btnEditImage_Click);
+            // 
+            // pcImage
+            // 
+            this.pcImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pcImage.Location = new System.Drawing.Point(15, 214);
+            this.pcImage.Name = "pcImage";
+            this.pcImage.Size = new System.Drawing.Size(273, 60);
+            this.pcImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcImage.TabIndex = 9;
+            this.pcImage.TabStop = false;
+            // 
             // cbFoodCate
             // 
             this.cbFoodCate.FormattingEnabled = true;
@@ -497,39 +531,6 @@
             this.lbDiscount.Size = new System.Drawing.Size(98, 15);
             this.lbDiscount.TabIndex = 4;
             this.lbDiscount.Text = "Khuyến mãi (%)";
-            // 
-            // pcImage
-            // 
-            this.pcImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.pcImage.Location = new System.Drawing.Point(15, 214);
-            this.pcImage.Name = "pcImage";
-            this.pcImage.Size = new System.Drawing.Size(273, 60);
-            this.pcImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pcImage.TabIndex = 9;
-            this.pcImage.TabStop = false;
-            // 
-            // btnEditImage
-            // 
-            this.btnEditImage.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnEditImage.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnEditImage.Location = new System.Drawing.Point(294, 214);
-            this.btnEditImage.Name = "btnEditImage";
-            this.btnEditImage.Size = new System.Drawing.Size(62, 23);
-            this.btnEditImage.TabIndex = 10;
-            this.btnEditImage.Text = "Cập nhật";
-            this.btnEditImage.Click += new System.EventHandler(this.btnEditImage_Click);
-            // 
-            // btnDeleteImage
-            // 
-            this.btnDeleteImage.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDeleteImage.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnDeleteImage.Location = new System.Drawing.Point(294, 243);
-            this.btnDeleteImage.Name = "btnDeleteImage";
-            this.btnDeleteImage.Size = new System.Drawing.Size(62, 23);
-            this.btnDeleteImage.TabIndex = 10;
-            this.btnDeleteImage.Text = "Xóa";
-            this.btnDeleteImage.Click += new System.EventHandler(this.btnDeleteImage_Click);
             // 
             // formFoods
             // 

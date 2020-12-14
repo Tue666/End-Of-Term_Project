@@ -69,6 +69,10 @@ namespace QuanLiCuaHangWinForms
                 pcImage.Image = new Bitmap(Application.StartupPath + '\\' + fileName[fileName.Length - 1]);
             }
         }
+        private bool checkExistUser(int userID)
+        {
+            return AccountDAL.Singleton.checkExitUser(userID);
+        }
         #endregion
 
         #region Events
@@ -141,9 +145,16 @@ namespace QuanLiCuaHangWinForms
         {
             if (txbUserName.Text != "" || txbPass.Text != "" || txbType.Text != "")
             {
-                insertUser(txbUserName.Text, txbPass.Text, int.Parse(txbType.Text), txbName.Text, txbSex.Text, int.Parse(txbAge.Text), txbNumber.Text, txbEmail.Text, txbAdress.Text);
-                MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
-                loadDataAccount();
+                if (!AccountDAL.Singleton.checkExistName(txbUserName.Text))
+                {
+                    insertUser(txbUserName.Text, txbPass.Text, int.Parse(txbType.Text), txbName.Text, txbSex.Text, int.Parse(txbAge.Text), txbNumber.Text, txbEmail.Text, txbAdress.Text);
+                    MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
+                    loadDataAccount();
+                }
+                else
+                {
+                    MessageBox.Show("Đã có tên này", "Thông báo", MessageBoxButtons.OK);
+                }
             }
             else
             {
@@ -155,9 +166,16 @@ namespace QuanLiCuaHangWinForms
         {
             if (txbUserID.Text != "")
             {
-                deleteUser(int.Parse(txbUserID.Text));
-                MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
-                loadDataAccount();
+                if (checkExistUser(Convert.ToInt32(txbUserID.Text)))
+                {
+                    deleteUser(int.Parse(txbUserID.Text));
+                    MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                    loadDataAccount();
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy mã khách hàng cần xóa. Xem lại!", "Thông báo", MessageBoxButtons.OK);
+                }
             }
             else
             {
@@ -211,6 +229,10 @@ namespace QuanLiCuaHangWinForms
             MessageBox.Show("Xóa ảnh thành công", "Thông báo", MessageBoxButtons.OK);
             loadImage(txbUserName.Text, txbPass.Text);
             loadDataAccount();
+        }
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            (System.Windows.Forms.Application.OpenForms["formMainMenu"] as formMainMenu).deleteTab("Admin");
         }
         #endregion
     }

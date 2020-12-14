@@ -23,6 +23,7 @@ namespace QuanLiCuaHangWinForms
             if (AccountDAL.Type == 1)
             {
                 rbTAdmin.Visible = true;
+                btnManageTable.Visible = true;
             }
             formIntroduce fIntro = new formIntroduce();
             fIntro.FormBorderStyle = FormBorderStyle.None;
@@ -30,6 +31,16 @@ namespace QuanLiCuaHangWinForms
         }
 
         #region Methods
+        public void deleteTab(string tabName)
+        {
+            for (int i = 0; i < tMenu.Tabs.Count; i++)
+            {
+                if (tMenu.Tabs[i].Text == tabName)
+                {
+                    tMenu.Tabs.Remove(tMenu.Tabs[i]);
+                }
+            }
+        }
         bool checkTab(string tabName)
         {
             for (int i = 0; i < tMenu.Tabs.Count; i++)
@@ -110,10 +121,29 @@ namespace QuanLiCuaHangWinForms
             formFoods fFood = new formFoods();
             loadTab(fFood, "Thức ăn");
         }
+        private void btnWallet_Click(object sender, EventArgs e)
+        {
+            formWallet fWallet = new formWallet();
+            loadTab(fWallet, "Ví tiền");
+        }
         private void btnRevenue_Click(object sender, EventArgs e)
         {
             formRevenue fRevenue = new formRevenue();
             loadTab(fRevenue, "Doanh thu");
+        }
+        private void btnManageTable_Click(object sender, EventArgs e)
+        {
+            formManageTable fManageTable = new formManageTable();
+            fManageTable.ShowDialog();
+            for (int i = 0; i < tMenu.Tabs.Count; i++)
+            {
+                if (tMenu.Tabs[i].Text == "Bàn ăn")
+                {
+                    tMenu.Tabs.Remove(tMenu.Tabs[i]);
+                    formTable fTable = new formTable();
+                    loadTab(fTable, "Bàn ăn");
+                }
+            }
         }
         #endregion
     }
